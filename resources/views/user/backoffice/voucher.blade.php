@@ -64,52 +64,9 @@
                                 <td>{{$v->penerima}}</td>
                                 <td>{{$v->keterangan}}</td>
                                 <td style="text-align:center;">
-                                    <a href="" class="badge bg-primary" style="width: 40px;" data-bs-toggle="modal"
-                                        data-bs-target="#detail{{$v->id}}"><i class="bi bi-eye"></i></a>
+                                    <a href="/member/voucher/e-voucher/{{$v->id}}" class="badge bg-warning" style="width: 40px;"><i class="bi bi-printer"></i></a>
                                 </td>
                             </tr>
-                            <div class="modal fade" id="detail{{$v->id}}" tabindex="-1">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Detail Pemakaian Voucher</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-6 mt-2">
-                                                        <label for="inputName5" class="form-label fw-bold">Tgl.
-                                                            Voucher</label>
-                                                        <p>{{Carbon\Carbon::parse($v->tgl_voucher)->isoFormat('dddd, D MMMM Y')}}
-                                                        </p>
-                                                    </div>
-                                                    <div class="col-md-6 mt-2">
-                                                        <label for="inputName5" class="form-label fw-bold">No. Voucher</label>
-                                                        <p>{{$v->no_voucher}}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 mt-2">
-                                                        <label for="inputName5" class="form-label fw-bold">Penerima</label>
-                                                        <p>{{$v->penerima}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 mt-2">
-                                                        <label for="inputName5" class="form-label fw-bold">Keterangan</label>
-                                                        <p>{{$v->keterangan}}</p>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Kembali</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- End Detail Modal -->
                             @endforeach
                             @else
                             <td colspan="8" style="text-align: center; font-weight: bold;">Tidak Ada Data</td>

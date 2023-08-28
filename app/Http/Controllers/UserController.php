@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\Voucher;
 use Mail;
 use Auth;
+use PDF;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class UserController extends Controller
@@ -105,6 +106,14 @@ class UserController extends Controller
                             ->orWhere([['id_user', auth()->user()->id], ['no_voucher','like',"%".$keyword."%"]])
                             ->latest()->paginate(10);
         return view('user.backoffice.voucher', compact('member', 'reg', 'membership', 'vouchers'));
+    }
+
+    public function voucher_print(Voucher $voucher)
+    {
+        $data = ['title' => 'ASA Hospitality E-Voucher', 'tgl_voucher' => Carbon::parse($voucher->tgl_voucher)->isoFormat('dddd, D MMMM Y'), 'no_voucher' => $voucher->no_voucher, 'penerima' => $voucher->penerima];
+        $customPaper = array(0,0,567.00,481.89);
+        $pdf = PDF::loadView('user.e-voucher', $data)->setPaper($customPaper, 'portrait');
+        return $pdf->download($voucher->no_voucher.'_E-Voucher.pdf');
     }
 
     public function update_member(Request $request, Member $member)
