@@ -156,14 +156,18 @@ class MembershipController extends Controller
     public function dms_index()
     {        
         $members = DB::table('registrations')
+                        ->select('registrations.id', 'registrations.tgl_registrasi', 'registrations.no_registrasi', 'registrations.tgl_penerimaan_membership', 'members.nama_depan', 'members.nama_belakang', 'members.jenis_kelamin', 'members.no_hp', 'memberships.nama_membership', 'memberships.jumlah_voucher', 'memberships.periode', 'memberships.satuan_periode', 'users.email', 'users.username')
+                        ->addSelect(DB::raw('COUNT(vouchers.id) as voucher_used'))
                         ->leftjoin('memberships', 'registrations.id_membership', '=', 'memberships.id')
                         ->leftjoin('members', 'registrations.id_member', '=', 'members.id')
                         ->leftjoin('users', 'members.id_user', '=', 'users.id')
+                        ->leftjoin('vouchers', 'users.id', '=', 'vouchers.id_user')
                         ->where([
                             ['users.role', '=', 'member'],
                             ['registrations.status_penerimaan_membership', '=', 1],
                             ['users.is_verified', '=', 1]
                         ])
+                        ->groupBy('registrations.id', 'registrations.created_at', 'registrations.tgl_registrasi', 'registrations.no_registrasi', 'registrations.tgl_penerimaan_membership', 'members.nama_depan', 'members.nama_belakang', 'members.jenis_kelamin', 'members.no_hp', 'memberships.nama_membership', 'memberships.jumlah_voucher', 'memberships.periode', 'memberships.satuan_periode', 'users.email', 'users.username')
                         ->latest('registrations.created_at')
                         ->paginate(10);   
 

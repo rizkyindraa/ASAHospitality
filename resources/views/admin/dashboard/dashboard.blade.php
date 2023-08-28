@@ -14,7 +14,7 @@
     <div class="col-lg-12">
         <div class="row">
 
-            <!-- Sales Card -->
+            <!-- Members Card -->
             <div class="col-md-3">
                 <div class="card info-card sales-card">
 
@@ -33,9 +33,9 @@
                     </div>
 
                 </div>
-            </div><!-- End Sales Card -->
+            </div><!-- End Members Card -->
 
-            <!-- Customers Card -->
+            <!-- Members Card -->
             <div class="col-md-3">
 
                 <div class="card info-card sales-card">
@@ -56,9 +56,9 @@
                     </div>
                 </div>
 
-            </div><!-- End Customers Card -->
+            </div><!-- End Members Card -->
 
-            <!-- Revenue Card -->
+            <!-- Members Card -->
             <div class="col-md-3">
                 <div class="card info-card sales-card">
 
@@ -77,9 +77,9 @@
                     </div>
 
                 </div>
-            </div><!-- End Revenue Card -->
+            </div><!-- End Members Card -->
 
-            <!-- Customers Card -->
+            <!-- Members Card -->
             <div class="col-md-3">
 
                 <div class="card info-card sales-card">
@@ -100,11 +100,11 @@
                     </div>
                 </div>
 
-            </div><!-- End Customers Card -->
+            </div><!-- End Members Card -->
 
         </div>
 
-        <!-- Top Selling -->
+        <!-- Membership -->
         <div class="col-12">
             <div class="card top-selling overflow-auto">
 
@@ -137,7 +137,7 @@
                 </div>
 
             </div>
-        </div><!-- End Top Selling -->
+        </div><!-- End Top Membership -->
 
     </div><!-- End Left side columns -->
 

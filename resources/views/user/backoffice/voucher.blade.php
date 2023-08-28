@@ -77,8 +77,6 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                                @method('patch')
-                                                {{csrf_field()}}
                                                 <div class="row">
                                                     <div class="col-md-6 mt-2">
                                                         <label for="inputName5" class="form-label fw-bold">Tgl.
