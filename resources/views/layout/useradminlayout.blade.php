@@ -115,6 +115,13 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('member_voucher')}}">
+          <i class="bi bi-envelope-paper"></i>
+          <span>Voucher</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
     </ul>
 
   </aside><!-- End Sidebar-->

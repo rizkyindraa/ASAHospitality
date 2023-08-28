@@ -31,7 +31,7 @@
                 <div class="row mb-3">
                     <div class="row col-lg-6">
                         <div class="col-lg-6 label">Voucher</div>
-                        <div class="col-lg-6">{{$membership->jumlah_voucher}}x</div>
+                        <div class="col-lg-6"><span id="voucher">{{$membership->jumlah_voucher}}</span>x</div>
                     </div>
                     <div class="row col-lg-6">
                         <div class="col-lg-6 label">Sharing Profit</div>
@@ -95,7 +95,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-3">
                     <div class="row col-lg-6">
                         <div class="col-lg-6 label">Sisa Waktu Membership</div>
                         @if(is_null($reg->tgl_penerimaan_membership))
@@ -111,6 +111,16 @@
                         @endif
                     </div>
                 </div>
+                <div class="row">
+                    <div class="row col-lg-6">
+                        <div class="col-lg-6 label">Voucher Terpakai</div>
+                        <div class="col-lg-6"><span id='voucher-used'>{{$vouchers->count()}}</span> Voucher</div>
+                    </div>
+                    <div class="row col-lg-6">
+                        <div class="col-lg-6 label">Sisa Voucher</div>
+                        <div class="col-lg-6"><span id='sisa-voucher'></span> Voucher</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -121,6 +131,11 @@
     var val = document.getElementById("sisa").innerHTML;
     var num_val = Number(val);
     document.getElementById("sisa").innerHTML = num_val.toLocaleString('id-ID')
+
+    var voucher = parseFloat(document.getElementById("voucher").innerHTML);
+    var voucher_used = parseFloat(document.getElementById("voucher-used").innerHTML);
+    var sisa_voucher = voucher - voucher_used;
+    document.getElementById("sisa-voucher").innerHTML = sisa_voucher;
 </script>
 
 @endsection

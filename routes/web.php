@@ -80,6 +80,11 @@ route::group(['middleware' => ['auth','cekrole:member']], function() {
 
     //membership
     Route::get('/member/membership', [UserController::class, 'member_membership'])->name('member_membership');
+
+    //voucher
+    Route::get('/member/voucher', [UserController::class, 'member_voucher'])->name('member_voucher');
+    Route::post('/member/store-voucher', [UserController::class, 'voucher_store'])->name('store_voucher');
+    Route::get('/member/voucher/cari/', [UserController::class, 'voucher_search'])->name('voucher_search');
 });
 
 

@@ -10,6 +10,7 @@ use App\Models\Membership;
 use App\Models\Registration;
 use App\Models\Member;
 use App\Models\User;
+use App\Models\Voucher;
 use Mail;
 use Auth;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -80,7 +81,30 @@ class UserController extends Controller
         $member = Member::where('id_user', auth()->user()->id)->first();
         $reg = Registration::where('id_member', $member->id)->first();
         $membership = Membership::where('id', $reg->id_membership)->first();
-        return view('user.backoffice.membership', compact('member', 'reg', 'membership'));
+        $vouchers = Voucher::where('id_user', auth()->user()->id);
+        return view('user.backoffice.membership', compact('member', 'reg', 'membership', 'vouchers'));
+    }
+
+    public function member_voucher()
+    {
+        $member = Member::where('id_user', auth()->user()->id)->first();
+        $reg = Registration::where('id_member', $member->id)->first();
+        $membership = Membership::where('id', $reg->id_membership)->first();
+        $vouchers = Voucher::where('id_user', auth()->user()->id)->latest()->paginate(10);
+        return view('user.backoffice.voucher', compact('member', 'reg', 'membership', 'vouchers'));
+    }
+
+    public function voucher_search(Request $request)
+    {
+        $keyword = $request->cari;
+        $member = Member::where('id_user', auth()->user()->id)->first();
+        $reg = Registration::where('id_member', $member->id)->first();
+        $membership = Membership::where('id', $reg->id_membership)->first();
+        $vouchers = Voucher::where([['id_user', auth()->user()->id], ['penerima','like',"%".$keyword."%"]])
+                            ->orWhere([['id_user', auth()->user()->id], ['keterangan','like',"%".$keyword."%"]])
+                            ->orWhere([['id_user', auth()->user()->id], ['no_voucher','like',"%".$keyword."%"]])
+                            ->latest()->paginate(10);
+        return view('user.backoffice.voucher', compact('member', 'reg', 'membership', 'vouchers'));
     }
 
     public function update_member(Request $request, Member $member)
@@ -199,6 +223,30 @@ class UserController extends Controller
     public function reloadCaptcha()
     {
         return response()->json(['captcha'=> captcha_img('flat')]);
+    }
+
+    public function voucher_store(Request $request)
+    {
+        $request->validate([
+            'tgl_voucher' => 'required',
+            'penerima' => 'required',
+            'keterangan' => 'required'
+        ],
+        [
+            'tgl_voucher.required' => 'Pilih Tgl. Voucher',
+            'penerima.required' => 'Masukkan Penerima',
+            'keterangan.required' => 'Masukkan Keterangan'
+        ]);
+
+        Voucher::create([
+            'tgl_voucher' => $request->tgl_voucher,
+            'no_voucher' => 'VOC'.'-'.Carbon::now()->format('d').Carbon::now()->format('m').Carbon::now()->year.Str::random(6),
+            'penerima' => $request->penerima,
+            'keterangan' => $request->keterangan,
+            'id_user' => auth()->user()->id
+            ]);
+
+        return redirect('/member/voucher')->with('status', 'Tambah Voucher Berhasil');
     }
 
     public function member_store(Request $request)
