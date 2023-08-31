@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,14 @@ route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() 
     Route::get('/daftar_member', [MembershipController::class, 'dms_index'])->name('daftar_member');
     Route::get('/daftar_member/cari/', [MembershipController::class, 'dms_search'])->name('dms_search');
 
+    //slider
+    Route::get('/slider', [HomeController::class, 'slider_index'])->name('slider');
+    Route::get('/create_slider', [HomeController::class, 'slider_create'])->name('create_slider');
+    Route::post('/store_slider', [HomeController::class, 'slider_store'])->name('store_slider');
+    Route::get('/update_slider/{slider}', [HomeController::class, 'slider_update']);
+    Route::patch('/update_slider_konten/{slider}', [HomeController::class, 'slider_konten_update']);
+    Route::patch('/update_slider_picture/{slider}', [HomeController::class, 'slider_picture_update']);
+    Route::get('/delete_slider/{id}', [HomeController::class, 'destroy_slider'])->name('delete_slider');
 });
 
 route::group(['middleware' => ['auth','cekrole:member']], function() {

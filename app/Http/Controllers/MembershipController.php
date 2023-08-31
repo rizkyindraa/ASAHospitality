@@ -169,7 +169,7 @@ class MembershipController extends Controller
                         ])
                         ->groupBy('registrations.id', 'registrations.created_at', 'registrations.tgl_registrasi', 'registrations.no_registrasi', 'registrations.tgl_penerimaan_membership', 'members.nama_depan', 'members.nama_belakang', 'members.jenis_kelamin', 'members.no_hp', 'memberships.nama_membership', 'memberships.jumlah_voucher', 'memberships.periode', 'memberships.satuan_periode', 'users.email', 'users.username')
                         ->latest('registrations.created_at')
-                        ->paginate(10);   
+                        ->paginate(10);  
 
         return view('admin.membership.daftar_member.index', compact('members'));
     }

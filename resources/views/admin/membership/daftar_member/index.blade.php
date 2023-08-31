@@ -82,7 +82,7 @@
                                 </td>
                             </tr>
                             <div class="modal fade" id="detail{{$member->id}}" tabindex="-1">
-                                <div class="modal-dialog modal-lg">
+                                <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title">Detail Member</h5>
@@ -110,11 +110,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-6 mt-2">
+                                                    <div class="col-md-4 mt-2">
                                                         <label for="inputName5" class="form-label fw-bold">Email</label>
                                                         <p>{{$member->email}}</p>
                                                     </div>
-                                                    <div class="col-md-6 mt-2">
+                                                    <div class="col-md-4 mt-2">
                                                         <label for="inputName5" class="form-label fw-bold">Username</label>
                                                         <p>{{$member->username}}</p>
                                                     </div>

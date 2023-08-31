@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('NiceAdmin/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('NiceAdmin/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{asset('assets/asamini.png')}}" rel="icon">
+  <link href="{{asset('assets/asamini.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -118,10 +118,10 @@
       @endif
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#membership-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-person-badge"></i><span>Membership</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="membership-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{route('jenis_membership')}}">
               <i class="bi bi-circle"></i><span>Jenis Membership</span>
@@ -140,6 +140,24 @@
           <li>
             <a href="{{route('daftar_member')}}">
               <i class="bi bi-circle"></i><span>Daftar Member</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#home-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-house"></i><span>Home</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="home-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('slider')}}">
+              <i class="bi bi-circle"></i><span>Slider</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="bi bi-circle"></i><span>Welcome</span>
             </a>
           </li>
         </ul>

@@ -11,6 +11,7 @@ use App\Models\Registration;
 use App\Models\Member;
 use App\Models\User;
 use App\Models\Voucher;
+use App\Models\Slider;
 use Mail;
 use Auth;
 use PDF;
@@ -23,7 +24,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.home.index');
+        $sliders = Slider::latest()->get();
+        return view('user.home.index', compact('sliders'));
     }
 
     public function fp_index()

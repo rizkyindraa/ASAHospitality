@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{asset('User/assets/img/favicon.png')}}" rel="icon">
-    <link href="{{asset('User/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{asset('assets/asamini.png')}}" rel="icon">
+    <link href="{{asset('assets/asamini.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -22,6 +22,7 @@
     <link href="{{asset('User/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
     <link href="{{asset('User/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
     <link href="{{asset('User/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{asset('User/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
@@ -143,6 +144,7 @@
     <script src="{{asset('User/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
     <script src="{{asset('User/assets/vendor/php-email-form/validate.js')}}"></script>
     <script src="{{asset('User/assets/vendor/aos/aos.js')}}"></script>
+    <script src="{{asset('User/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
     <script>
         $('#reload').click(function () {
             $.ajax({
