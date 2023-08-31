@@ -142,6 +142,11 @@
               <i class="bi bi-circle"></i><span>Daftar Member</span>
             </a>
           </li>
+          <li>
+            <a href="{{route('list_voucher')}}">
+              <i class="bi bi-circle"></i><span>Voucher</span>
+            </a>
+          </li>
         </ul>
       </li><!-- End Components Nav -->
 

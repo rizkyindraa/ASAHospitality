@@ -43,7 +43,7 @@
                     <div class="title-box-dx mt-5">
                         <h3 class="title-dx" style="text-align: center">Welcome to The Svarga Renjana Villa</h3>
                     </div>
-                    <p class="color-text-a" style="text-align: center; font-weight:bold;">
+                    <p class="color-text-a" style="text-align: center; font-weight:bold; overflow: visible; overflow-wrap:anywhere;">
                         CLICK HERE TO FIND THE GREAT OVER AND POTENTIAL INVESTMENT
                     </p>
                     <div class="col-md-12 text-center">

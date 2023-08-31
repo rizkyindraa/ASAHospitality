@@ -69,6 +69,11 @@ route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() 
     Route::get('/daftar_member', [MembershipController::class, 'dms_index'])->name('daftar_member');
     Route::get('/daftar_member/cari/', [MembershipController::class, 'dms_search'])->name('dms_search');
 
+    //voucher
+    Route::get('/list_voucher', [MembershipController::class, 'list_voucher_index'])->name('list_voucher');
+    Route::get('/voucher_status_update/{v}', [MembershipController::class, 'voucher_status_update']);
+
+
     //slider
     Route::get('/slider', [HomeController::class, 'slider_index'])->name('slider');
     Route::get('/create_slider', [HomeController::class, 'slider_create'])->name('create_slider');

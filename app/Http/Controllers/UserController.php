@@ -254,7 +254,9 @@ class UserController extends Controller
             'no_voucher' => 'VOC'.'-'.Carbon::now()->format('d').Carbon::now()->format('m').Carbon::now()->year.Str::random(6),
             'penerima' => $request->penerima,
             'keterangan' => $request->keterangan,
-            'id_user' => auth()->user()->id
+            'id_user' => auth()->user()->id,
+            'status' => '1',
+            'tgl_berubah_status' => Carbon::now()->toDateString()
             ]);
 
         return redirect('/member/voucher')->with('status', 'Tambah Voucher Berhasil');

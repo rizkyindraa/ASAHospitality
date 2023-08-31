@@ -15,6 +15,8 @@ class Voucher extends Model
         'keterangan',
         'penerima',
         'id_user',
+        'status',
+        'tgl_berubah_status',
     ];
 
     public function userid() {

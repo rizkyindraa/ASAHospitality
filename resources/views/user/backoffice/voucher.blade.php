@@ -46,9 +46,10 @@
                         <thead>
                             <tr>
                                 <th scope="col" style="text-align:center;width:50px;">#</th>
-                                <th scope="col" style="text-align:center;width:200px;">Tgl. Voucher</th>
+                                <th scope="col" style="text-align:center;width:200px;">Info Voucher</th>
                                 <th scope="col" style="text-align:center;">Penerima</th>
                                 <th scope="col" style="text-align:center;">Keterangan</th>
+                                <th scope="col" style="text-align:center;width:200px;">Status</th>
                                 <th scope="col" style="text-align:center;width:40px;">Aksi</th>
                             </tr>
                         </thead>
@@ -63,6 +64,17 @@
                                 </td>
                                 <td>{{$v->penerima}}</td>
                                 <td>{{$v->keterangan}}</td>
+                                <td style="text-align: center">
+                                    @if($v->status == 1)
+                                    <span style="color: #2bc740">Masih Aktif</span>
+                                    <br>
+                                    {{Carbon\Carbon::parse($v->tgl_berubah_status)->isoFormat('dddd, D MMMM Y')}}
+                                    @else
+                                    <span style="color: #cc271f">Sudah Dipakai</span>
+                                    <br>
+                                    {{Carbon\Carbon::parse($v->tgl_berubah_status)->isoFormat('dddd, D MMMM Y')}}
+                                    @endif
+                                </td>
                                 <td style="text-align:center;">
                                     <a href="/member/voucher/e-voucher/{{$v->id}}" class="badge bg-warning" style="width: 40px;"><i class="bi bi-printer"></i></a>
                                 </td>

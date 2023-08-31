@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Membership;
+use App\Models\Voucher;
 use App\Models\Registration;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class MembershipController extends Controller
 {
@@ -14,6 +16,17 @@ class MembershipController extends Controller
     {
         $memberships = Membership::latest()->paginate(10);
         return view('admin.membership.jenis_membership.index', compact('memberships'));
+    }
+
+    public function list_voucher_index()
+    {
+        $vouchers = DB::table('vouchers')
+                        ->select('vouchers.id', 'vouchers.tgl_berubah_status', 'vouchers.tgl_voucher', 'vouchers.no_voucher', 'vouchers.status', 'vouchers.keterangan', 'vouchers.penerima', 'vouchers.id_user', 'members.nama_depan', 'members.nama_belakang', 'users.email')
+                        ->leftjoin('users', 'vouchers.id_user', '=', 'users.id')
+                        ->leftjoin('members', 'users.id', '=', 'members.id_user')
+                        ->latest('vouchers.created_at')
+                        ->paginate(10);
+        return view('admin.membership.list_voucher.index', compact('vouchers'));
     }
 
     public function jm_search(Request $request)
@@ -301,6 +314,24 @@ class MembershipController extends Controller
             ]);
 
         return back()->with('status', 'Penerimaan Membership Telah Berhasil Terupdate');
+    }
+
+    public function voucher_status_update(Voucher $v)
+    {
+        if($v->status == '1'){
+            Voucher::where('id', $v->id)
+            ->update([
+                'status' => '0',
+                'tgl_berubah_status' => Carbon::now()->toDateString()
+            ]);
+        } else {
+            Voucher::where('id', $v->id)
+            ->update([
+                'status' => '1',
+                'tgl_berubah_status' => Carbon::now()->toDateString()
+            ]);
+        }    
+        return back()->with('status', 'Status Voucher Telah Berhasil Terupdate');
     }
 
     public function jm_destroy($id)
