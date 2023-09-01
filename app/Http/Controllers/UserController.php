@@ -12,6 +12,7 @@ use App\Models\Member;
 use App\Models\User;
 use App\Models\Voucher;
 use App\Models\Slider;
+use App\Models\Greeting;
 use Mail;
 use Auth;
 use PDF;
@@ -25,7 +26,8 @@ class UserController extends Controller
     public function index()
     {
         $sliders = Slider::latest()->get();
-        return view('user.home.index', compact('sliders'));
+        $greeting = Greeting::first();
+        return view('user.home.index', compact('sliders', 'greeting'));
     }
 
     public function fp_index()

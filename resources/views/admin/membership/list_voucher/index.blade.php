@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-lg-6 search-bar">
                             <form class="search-form d-flex align-items-center" method="GET"
-                                action="">
+                                action="{{route('list_voucher_search')}}">
                                 <input type="text" name="cari" id="cari" placeholder="Search"
                                     title="Enter search keyword">
                                 <a type="submit" href="{{route('list_voucher')}}" class="btn-refresh"

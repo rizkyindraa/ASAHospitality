@@ -29,6 +29,33 @@ class MembershipController extends Controller
         return view('admin.membership.list_voucher.index', compact('vouchers'));
     }
 
+    public function list_voucher_search(Request $request)
+    {
+        $keyword = $request->cari;
+        $vouchers = DB::table('vouchers')
+                        ->select('vouchers.id', 'vouchers.tgl_berubah_status', 'vouchers.tgl_voucher', 'vouchers.no_voucher', 'vouchers.status', 'vouchers.keterangan', 'vouchers.penerima', 'vouchers.id_user', 'members.nama_depan', 'members.nama_belakang', 'users.email')
+                        ->leftjoin('users', 'vouchers.id_user', '=', 'users.id')
+                        ->leftjoin('members', 'users.id', '=', 'members.id_user')
+                        ->where([
+                            ['vouchers.no_voucher', 'like', "%".$keyword."%"]
+                        ])
+                        ->orWhere([
+                            ['vouchers.penerima', 'like', "%".$keyword."%"]
+                        ])
+                        ->orWhere([
+                            ['members.nama_depan', 'like', "%".$keyword."%"]
+                        ])
+                        ->orWhere([
+                            ['members.nama_belakang', 'like', "%".$keyword."%"]
+                        ])
+                        ->orWhere([
+                            ['users.email', 'like', "%".$keyword."%"]
+                        ])
+                        ->latest('vouchers.created_at')
+                        ->paginate(10);
+        return view('admin.membership.list_voucher.index', compact('vouchers'));
+    }
+
     public function jm_search(Request $request)
     {
         $keyword = $request->cari;

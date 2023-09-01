@@ -161,7 +161,7 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{{route('welcome')}}">
               <i class="bi bi-circle"></i><span>Welcome</span>
             </a>
           </li>

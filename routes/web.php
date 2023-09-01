@@ -72,6 +72,7 @@ route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() 
     //voucher
     Route::get('/list_voucher', [MembershipController::class, 'list_voucher_index'])->name('list_voucher');
     Route::get('/voucher_status_update/{v}', [MembershipController::class, 'voucher_status_update']);
+    Route::get('/list_voucher/cari', [MembershipController::class, 'list_voucher_search'])->name('list_voucher_search');
 
 
     //slider
@@ -82,6 +83,13 @@ route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() 
     Route::patch('/update_slider_konten/{slider}', [HomeController::class, 'slider_konten_update']);
     Route::patch('/update_slider_picture/{slider}', [HomeController::class, 'slider_picture_update']);
     Route::get('/delete_slider/{id}', [HomeController::class, 'destroy_slider'])->name('delete_slider');
+
+    //welcome
+    Route::get('/welcome', [HomeController::class, 'welcome_index'])->name('welcome');
+    Route::patch('/update_welcome_konten/{greeting}', [HomeController::class, 'welcome_konten_update']);
+    Route::patch('/update_welcome_picture/{greeting}', [HomeController::class, 'welcome_picture_update']);
+    Route::patch('/update_welcome_file/{greeting}', [HomeController::class, 'welcome_file_update']);
+
 });
 
 route::group(['middleware' => ['auth','cekrole:member']], function() {

@@ -346,6 +346,28 @@ a:hover {
   vertical-align: middle;
 }
 
+.title-box-e {
+  padding-bottom: 1.8rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.title-box-e .title-e {
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+.title-box-e .title-e:after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 4px;
+  background-color: #623b1a;
+  bottom: 20px;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
 .title-box-d {
   padding-bottom: 1.8rem;
   margin-bottom: 1rem;
@@ -2109,6 +2131,47 @@ a:hover {
 @media (min-width: 576px) {
   .sinse-box p {
     font-size: 1rem;
+  }
+}
+
+/*--------------------------------------------------------------
+# Overview Section
+--------------------------------------------------------------*/
+.section-overview {
+  background-color: #623b1a;
+  padding: 50px 0 50px 0;
+}
+
+.section-overview .overview-box {
+  background-color: #f1ece7;
+  padding: 50px 20px 50px 20px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-overview .overview-box .flyer {
+  padding: 20px 50px 20px 50px;
+}
+
+.section-overview .overview-box .flyer .overview-pic {
+  width: 40%;
+  display: block;
+  margin: auto;
+}
+
+.section-overview .overview-box .subtitle{
+  padding: 20px 70px 20px 70px;
+}
+
+.section-overview .overview-box .subtitle p {
+  text-align: center; 
+  font-weight:bold; 
+  overflow: visible; 
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 782px) {
+  .section-overview .overview-box .flyer .overview-pic {
+    width: 100%
   }
 }
 
