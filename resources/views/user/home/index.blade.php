@@ -67,22 +67,79 @@
     <div class="container">
         <div class="col-lg-12 overview-box">
             <div class="title-box-e">
-                <h3 class="title-e" style="text-align: center">Company Overview</h3>
+                <h3 class="title-e" style="text-align: center">{{$overview->title}}</h3>
             </div>
             <div class="col-lg-12 flyer">
-                <img src="{{asset('assets/'. $greeting->greeting_picture)}}" class="overview-pic">
+                <img src="{{asset('assets/'. $overview->overview_picture)}}" class="overview-pic">
             </div>
             <div class="col-lg-12 subtitle">
                 <p>
-                    PT ASA Svargaloka Rinjani didirikan bersama pada tahun 2022 di Lombok, Nusa Tenggara Barat.
-                    Dengan melihat potensi besar dari Lombok di bidang ekonomi, pariwisata dan keindahan serta kekayaan
-                    alamnya. Juga didorong oleh dibangunnya Destinasi Wisata Super Prioritas, Sirkuit Mandalika. Kami
-                    bertekad mendorong kemajuan ekonomi dan pariwisata Lombok dengan membangun kawasan Villa yang
-                    mengusung konsep keseimbangan yang berkelanjutan antara Manusia dan Alam.
+                    {{$overview->subtitle}}
                 </p>
             </div>
 
         </div>
 </section>
+
+<section class="section-property section-t8">
+    <div class="container">
+
+        <div class="title-box-e mb-5">
+            <h3 class="title-e" style="text-align: center">The Villas</h3>
+        </div>
+
+        <div id="property-carousel" class="swiper">
+            <div class="swiper-wrapper">
+                @if(!$villas->isEmpty())
+                @foreach($villas as $villa)
+                <div class="carousel-item-b swiper-slide">
+                    <div class="card-box-a card-shadow">
+                        <div class="img-box-a">
+                            <img src="{{asset('assets/'. $villa->display)}}" alt="" class="img-a img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="">{{$villa->nama_villa}}
+                                    </h2>
+                                    <p style="color: #fff">{{$villa->subtitle}}</p>
+                                </div>
+                                <div class="card-body-a">
+                                    <a href="#" class="link-a">Detail
+                                        <span class="bi bi-chevron-right"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title">Villa Size</h4>
+                                            <span>{{$villa->size}} m<sup>2</sup>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Occupancy</h4>
+                                            <span>{{$villa->occupancy}}</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Bed Type</h4>
+                                            <span>{{$villa->bed_type}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End carousel item -->
+                @endforeach
+                @else
+                <h5 style="text-align: center; font-weight: bold;">Tidak Ada Data</h5>
+                @endif
+
+            </div>
+        </div>
+        <div class="propery-carousel-pagination carousel-pagination"></div>
+    </div>
+</section><!-- End Latest Properties Section -->
 
 @endsection

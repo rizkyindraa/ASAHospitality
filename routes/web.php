@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\VillaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,9 @@ Route::get('/admin', [LoginController::class, 'login_index'])->name('login');
 Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+//villa
+Route::get('/villa-list', [UserController::class, 'villa_index'])->name('guest_villa');
+
 route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() {
     
     //dashboard
@@ -77,6 +81,7 @@ route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() 
 
     //slider
     Route::get('/slider', [HomeController::class, 'slider_index'])->name('slider');
+    Route::get('/slider/cari', [HomeController::class, 'slider_search'])->name('slider_search');
     Route::get('/create_slider', [HomeController::class, 'slider_create'])->name('create_slider');
     Route::post('/store_slider', [HomeController::class, 'slider_store'])->name('store_slider');
     Route::get('/update_slider/{slider}', [HomeController::class, 'slider_update']);
@@ -90,6 +95,30 @@ route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() 
     Route::patch('/update_welcome_picture/{greeting}', [HomeController::class, 'welcome_picture_update']);
     Route::patch('/update_welcome_file/{greeting}', [HomeController::class, 'welcome_file_update']);
 
+    //overview
+    Route::get('/overview', [HomeController::class, 'overview_index'])->name('overview');
+    Route::patch('/update_overview_konten/{overview}', [HomeController::class, 'overview_konten_update']);
+    Route::patch('/update_overview_picture/{overview}', [HomeController::class, 'overview_picture_update']);
+
+    //villa
+    Route::get('/villa', [VillaController::class, 'villa_index'])->name('villa');
+    Route::get('/villa/cari', [VillaController::class, 'villa_search'])->name('villa_search');
+    Route::get('/create_villa', [VillaController::class, 'villa_create'])->name('create_villa');
+    Route::post('/store_villa', [VillaController::class, 'villa_store'])->name('store_villa');
+    Route::get('/villa/fitur/{villa}', [VillaController::class, 'fitur_index']);
+    Route::post('/store_fitur/{villa}', [VillaController::class, 'fitur_store'])->name('store_fitur');
+    Route::patch('/update_fitur/{feature}', [VillaController::class, 'fitur_update'])->name('update_fitur');
+    Route::get('/delete_fitur/{id}', [VillaController::class, 'fitur_destroy'])->name('delete_fitur');
+    Route::get('/villa/gallery/{villa}', [VillaController::class, 'gallery_index']);
+    Route::post('/store_gallery/{villa}', [VillaController::class, 'gallery_store'])->name('store_gallery');
+    Route::patch('/update_gallery/{gallery}', [VillaController::class, 'gallery_update'])->name('update_gallery');
+    Route::get('/delete_gallery/{id}', [VillaController::class, 'gallery_destroy'])->name('delete_gallery');
+    Route::get('/detail_villa/{villa}', [VillaController::class, 'villa_detail'])->name('detail_villa');
+    Route::get('/edit_villa/{villa}', [VillaController::class, 'villa_edit'])->name('edit_villa');
+    Route::patch('/update_villa_konten/{villa}', [VillaController::class, 'villa_konten_update'])->name('update_villa_konten');
+    Route::patch('/update_villa_picture/{villa}', [VillaController::class, 'villa_picture_update'])->name('update_villa_picture');
+    Route::patch('/update_villa_display/{villa}', [VillaController::class, 'villa_display_update'])->name('update_villa_display');
+    Route::get('/delete_villa/{id}', [VillaController::class, 'villa_destroy'])->name('delete_villa');
 });
 
 route::group(['middleware' => ['auth','cekrole:member']], function() {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Models\Membership;
@@ -13,6 +14,8 @@ use App\Models\User;
 use App\Models\Voucher;
 use App\Models\Slider;
 use App\Models\Greeting;
+use App\Models\Overview;
+use App\Models\Villa;
 use Mail;
 use Auth;
 use PDF;
@@ -25,18 +28,28 @@ class UserController extends Controller
      */
     public function index()
     {
+        $villas = Villa::all();
         $sliders = Slider::latest()->get();
         $greeting = Greeting::first();
-        return view('user.home.index', compact('sliders', 'greeting'));
+        $overview = Overview::first();
+        return view('user.home.index', compact('sliders', 'greeting', 'overview', 'villas'));
+    }
+
+    public function villa_index()
+    {
+        $villas = Villa::all();
+        return view('user.villa.index', compact('villas'));
     }
 
     public function fp_index()
     {
-        return view('user.membership.forgetpassword');
+        $villas = Villa::all();
+        return view('user.membership.forgetpassword', compact('villas'));
     }
 
     public function post_forget_password(Request $request)
     {   
+        $villas = Villa::all();
         $user = User::where('email', '=', $request->email)->first();
         if($user == null) {
             return redirect('/membership/forget-password')->with('error', 'Tidak ada akun yang menggunakan email ini');
@@ -45,16 +58,17 @@ class UserController extends Controller
                 $message->to($request->email);
                 $message->subject('Lupa Password Akun ASA Hospitality');
             });
-            return view('user.membership.postforgetpassword'); 
+            return view('user.membership.postforgetpassword', compact('villas')); 
         }
     }
 
     public function forget_password_verification($token)
     {   
+        $villas = Villa::all();
         $user = User::where('email_token', $token)->first();  
         $member = Member::where('id_user', $user->id)->first();       
         $reg = Registration::where('id_member', $member->id)->first();       
-        return view('user.membership.formforgetpassword', compact('user', 'member', 'reg', 'token'));
+        return view('user.membership.formforgetpassword', compact('user', 'member', 'reg', 'token', 'villas'));
     }
 
     public function update_password(Request $request, User $user)
@@ -202,18 +216,21 @@ class UserController extends Controller
 
     public function membership_index()
     {
+        $villas = Villa::all();
         $memberships = Membership::all();
-        return view('user.membership.index', compact('memberships'));
+        return view('user.membership.index', compact('memberships', 'villas'));
     }
 
     public function post_reg_membership_index()
     {
-        return view('user.membership.postregistration');
+        $villas = Villa::all();
+        return view('user.membership.postregistration', compact('villas'));
     }
 
     public function post_ver_membership_index()
     {
-        return view('user.membership.postverification');
+        $villas = Villa::all();
+        return view('user.membership.postverification', compact('villas'));
     }
 
     public function verification($token)

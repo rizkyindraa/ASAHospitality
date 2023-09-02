@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-lg-6 search-bar">
                             <form class="search-form d-flex align-items-center" method="GET" action="{{route('jm_search')}}">
-                              <input type="text" name="cari" placeholder="Cari Dari Nama Membership" title="Enter search keyword">
+                              <input type="text" name="cari" placeholder="Cari" title="Enter search keyword">
                               <a type="submit" href="{{route('jenis_membership')}}" class="btn-refresh" title="Search"><i class="bi bi-arrow-clockwise"></i></a>
                               <button type="submit" class="btn-search" title="Search"><i class="bi bi-search"></i></button>
                             </form>

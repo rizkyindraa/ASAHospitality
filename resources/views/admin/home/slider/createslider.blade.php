@@ -10,7 +10,7 @@
             <h1>Tambah Slider</h1>
         </div>
         <div class="col-md-6">
-            <a href="{{url()->previous()}}" class="btn btn-secondary mb-2" style="float:right;">Kembali <i
+            <a href="{{route('slider')}}" class="btn btn-secondary mb-2" style="float:right;">Kembali <i
                     class="bi bi-backspace"></i></a>
         </div>
     </div>

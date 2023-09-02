@@ -7,6 +7,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\File;
 use App\Models\Slider;
 use App\Models\Greeting;
+use App\Models\Overview;
 
 class HomeController extends Controller
 {
@@ -16,10 +17,30 @@ class HomeController extends Controller
         return view('admin.home.slider.index', compact('sliders'));
     }
 
+    public function slider_search(Request $request) 
+    {
+        $keyword = $request->cari;
+        $sliders = Slider::where([
+                                ['title', 'like', "%".$keyword."%"]
+                                ])
+                            ->orWhere([
+                                ['subtitle', 'like', "%".$keyword."%"]
+                                ])
+                            ->latest()
+                            ->paginate(10);
+        return view('admin.home.slider.index', compact('sliders'));
+    }
+
     public function welcome_index() 
     {
         $greeting = Greeting::first();
         return view('admin.home.welcome.index', compact('greeting'));
+    }
+
+    public function overview_index() 
+    {
+        $overview = Overview::first();
+        return view('admin.home.overview.index', compact('overview'));
     }
 
     public function slider_create() 
@@ -84,7 +105,7 @@ class HomeController extends Controller
         return back()->with('status', 'Slider Telah Berhasil Terupdate');
     }
 
-    public function slider_picture_update(Request $request, SLider $slider)
+    public function slider_picture_update(Request $request, Slider $slider)
     {
         $request->validate([
             'slider_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=1270,min_height=720,max_width=4000,max_height=4000'
@@ -132,6 +153,26 @@ class HomeController extends Controller
             ]);
 
         return back()->with('status', 'Welcome Telah Berhasil Terupdate');
+    }
+
+    public function overview_konten_update(Request $request, Overview $overview)
+    {
+        $request->validate([
+            'title' => 'required',
+            'subtitle' => 'required'
+        ],
+        [
+            'title.required' => 'Masukkan Title',
+            'subtitle.required' => 'Masukkan Subtitle'
+        ]);
+
+        Overview::where('id', $overview->id)
+            ->update([
+                'title' => $request->title,
+                'subtitle' => $request->subtitle
+            ]);
+
+        return back()->with('status', 'Overview Telah Berhasil Terupdate');
     }
 
     public function welcome_picture_update(Request $request, Greeting $greeting)
@@ -182,6 +223,33 @@ class HomeController extends Controller
             ]);
 
         return back()->with('status', 'Welcome File Telah Berhasil Terupdate');
+    }
+
+    public function overview_picture_update(Request $request, Overview $overview)
+    {
+        $request->validate([
+            'overview_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=600,min_height=600,max_width=4000,max_height=4000'
+        ],
+        [
+            'overview_picture.image' => 'Harus Berupa Gambar',
+            'overview_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
+            'overview_picture.max' => 'Maksimal size 2mb',
+            'overview_picture.dimensions' => 'Resolusi Gambar Harus Lebih Dari 600x600'
+        ]);
+
+        $pic = $request->file('overview_picture');
+        $pic_name = $overview->overview_picture;
+        $file = public_path('/assets');
+        $img = Image::make($pic);
+        $img->resize(1920, 1080, function ($constraint) {$constraint->aspectRatio();});
+        $img->save($file.'/'.$pic_name);
+
+        Overview::where('id', $overview->id)
+            ->update([
+                'overview_picture' => $pic_name
+            ]);
+
+        return back()->with('status', 'Overview Picture Telah Berhasil Terupdate');
     }
 
     public function destroy_slider($id)

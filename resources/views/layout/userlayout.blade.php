@@ -62,10 +62,9 @@
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">The Villas</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item " href="">Aruna</a>
-                            <a class="dropdown-item " href="">Sabhita</a>
-                            <a class="dropdown-item " href="">Asasta</a>
-                            <a class="dropdown-item " href="">Asasta With View</a>
+                            @foreach($villas as $villa)
+                            <a class="dropdown-item " href="">{{$villa->nama_villa}}</a>
+                            @endforeach
                         </div>
                     </li>
 

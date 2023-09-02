@@ -19,7 +19,7 @@
                         <div class="col-lg-6 search-bar">
                             <form class="search-form d-flex align-items-center" method="GET"
                                 action="{{route('list_voucher_search')}}">
-                                <input type="text" name="cari" id="cari" placeholder="Search"
+                                <input type="text" name="cari" id="cari" placeholder="Cari"
                                     title="Enter search keyword">
                                 <a type="submit" href="{{route('list_voucher')}}" class="btn-refresh"
                                     title="Search"><i class="bi bi-arrow-clockwise"></i></a>
@@ -135,7 +135,7 @@
 
                             @endforeach
                             @else
-                            <td colspan="8" style="text-align: center; font-weight: bold;">Tidak Ada Data</td>
+                            <td colspan="6" style="text-align: center; font-weight: bold;">Tidak Ada Data</td>
                             @endif
                         </tbody>
                     </table>
