@@ -74,13 +74,11 @@
 <!-- ======= Contact Single ======= -->
 <section class="register" id="register">
     <div class="container">
-        <div class="col-md-12">
-            <div class="title-wrap d-flex justify-content-center">
-                <div class="title-box">
-                    <h2 class="title-a">Register Membership</h2>
-                </div>
-            </div>
+
+        <div class="title-box-f mb-2">
+            <h3 class="title-f" style="text-align: center">Register Membership</h3>
         </div>
+
         <div class="row">
             <div class="col-lg-6">
                 <div class="register-box">

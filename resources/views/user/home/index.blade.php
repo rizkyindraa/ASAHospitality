@@ -142,4 +142,41 @@
     </div>
 </section><!-- End Latest Properties Section -->
 
+<section id="team" class="team section-t8 mb-5">
+
+    <div class="container">
+
+        <div class="title-box-e mb-5">
+            <h3 class="title-e" style="text-align: center">Team</h3>
+        </div>
+
+        <div class="row gy-5 justify-content-center">
+            @if(!$teams->isEmpty())
+            @foreach($teams as $team)
+            <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-img">
+                    <img src="{{asset('assets/'. $team->foto)}}" class="img-fluid" alt="">
+                    <div class="social">
+                        <a href="{{$team->tw_link}}" target="_blank"><i class="bi bi-twitter"></i></a>
+                        <a href="{{$team->fb_link}}" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="{{$team->ig_link}}" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="{{$team->li_link}}" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="member-info text-center">
+                    <h4>{{$team->nama}}</h4>
+                    <span>{{$team->posisi}}</span>
+                    <p>{{$team->email}}</p>
+                </div>
+            </div><!-- End Team Member -->
+            @endforeach
+            @else
+            <h5 style="text-align: center; font-weight: bold;">Tidak Ada Data</h5>
+            @endif
+        </div>
+
+    </div>
+
+</section><!-- End Team Section -->
+
 @endsection

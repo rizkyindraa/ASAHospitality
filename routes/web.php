@@ -7,6 +7,8 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VillaController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,8 +47,10 @@ Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogi
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //villa
-Route::get('/villa-list', [UserController::class, 'villa_index'])->name('guest_villa');
 Route::get('/villa-list/{villa}', [UserController::class, 'villa_single_index']);
+
+//contact
+Route::get('/contact-us', [UserController::class, 'contact_index'])->name('guest_contact');
 
 route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() {
     
@@ -120,6 +124,21 @@ route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() 
     Route::patch('/update_villa_picture/{villa}', [VillaController::class, 'villa_picture_update'])->name('update_villa_picture');
     Route::patch('/update_villa_display/{villa}', [VillaController::class, 'villa_display_update'])->name('update_villa_display');
     Route::get('/delete_villa/{id}', [VillaController::class, 'villa_destroy'])->name('delete_villa');
+
+    //contact
+    Route::get('/contact', [ContactController::class, 'contact_index'])->name('contact');
+    Route::patch('/update_contact/{contact}', [ContactController::class, 'contact_update'])->name('update_contact');
+
+    //team
+    Route::get('/team', [TeamController::class, 'team_index'])->name('team');
+    Route::get('/create_team', [TeamController::class, 'team_create'])->name('create_team');
+    Route::post('/store_team', [TeamController::class, 'team_store'])->name('store_team');
+    Route::get('/edit_team/{team}', [TeamController::class, 'team_edit'])->name('edit_team');
+    Route::patch('/update_team_konten/{team}', [TeamController::class, 'team_konten_update'])->name('update_team_konten');
+    Route::patch('/update_team_foto/{team}', [TeamController::class, 'team_foto_update'])->name('update_team_foto');
+    Route::get('/delete_team/{id}', [TeamController::class, 'team_destroy'])->name('delete_team');
+    Route::get('/team/cari', [TeamController::class, 'team_search'])->name('team_search');
+
 });
 
 route::group(['middleware' => ['auth','cekrole:member']], function() {

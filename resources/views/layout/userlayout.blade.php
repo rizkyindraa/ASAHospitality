@@ -54,10 +54,6 @@
                         <a class="nav-link" href="{{route('home')}}">Home</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="">How We Work</a>
-                    </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">The Villas</a>
@@ -69,19 +65,22 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="">Facilities</a>
-                    </li>
-
-                    <li class="nav-item">
                         <a class="nav-link" href="{{route('membership')}}">Membership</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="">About Us</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Us</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item " href="">About</a>
+                            <a class="dropdown-item " href="">How We Work</a>
+                            <a class="dropdown-item " href="">Facilities</a>
+                            <a class="dropdown-item " href="">How to Get Here</a>
+                        </div>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="">Contact Us</a>
+                        <a class="nav-link" href="{{route('guest_contact')}}">Contact Us</a>
                     </li>
                 </ul>
             </div>
@@ -99,7 +98,7 @@
     <section class="section-footer">
         <div class="container">
             <img src="{{asset('assets/asalogo.png')}}" alt class="logo">
-            <p>Desa Aik Berik, Batu Keliang Utara, Lombok Tengah Nusa Tenggara Barat.</p>
+            <p>{{$contact->villa_address}}</p>
         </div>
     </section>
     <footer>
@@ -109,13 +108,13 @@
                     <div class="socials-a">
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="bi bi-facebook" aria-hidden="true"></i>
+                                <a target="_blank" href="https://api.whatsapp.com/send?phone=62{{$contact->phone}}">
+                                    <i class="bi bi-telephone" aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                                <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to={{$contact->email}}">
+                                    <i class="bi bi-envelope" aria-hidden="true"></i>
                                 </a>
                             </li>
                         </ul>

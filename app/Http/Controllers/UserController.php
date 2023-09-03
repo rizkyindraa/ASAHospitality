@@ -18,6 +18,8 @@ use App\Models\Overview;
 use App\Models\Villa;
 use App\Models\Gallery;
 use App\Models\Amenity;
+use App\Models\Contact;
+use App\Models\Team;
 use Mail;
 use Auth;
 use PDF;
@@ -30,37 +32,43 @@ class UserController extends Controller
      */
     public function index()
     {
+        $teams= Team::all();
         $villas = Villa::all();
+        $contact = Contact::first();
         $sliders = Slider::latest()->get();
         $greeting = Greeting::first();
         $overview = Overview::first();
-        return view('user.home.index', compact('sliders', 'greeting', 'overview', 'villas'));
+        return view('user.home.index', compact('sliders', 'greeting', 'overview', 'villas', 'contact', 'teams'));
     }
 
-    public function villa_index()
+    public function contact_index()
     {
         $villas = Villa::all();
-        return view('user.villa.index', compact('villas'));
+        $contact = Contact::first();
+        return view('user.contact.index', compact('villas', 'contact'));
     }
 
     public function villa_single_index($villa)
     {
+        $contact = Contact::first();
         $villas = Villa::all();
         $single_villa = Villa::where('id', $villa)->first();
         $galleries = Gallery::where('id_villa', $villa)->get();
         $features = Amenity::where('id_villa', $villa)->get();
         $other_villas = Villa::where('id', '<>', $villa)->get();
-        return view('user.villa.single', compact('villas', 'single_villa', 'galleries', 'features', 'other_villas'));
+        return view('user.villa.single', compact('villas', 'single_villa', 'galleries', 'features', 'other_villas', 'contact'));
     }
 
     public function fp_index()
     {
+        $contact = Contact::first();
         $villas = Villa::all();
-        return view('user.membership.forgetpassword', compact('villas'));
+        return view('user.membership.forgetpassword', compact('villas', 'contact'));
     }
 
     public function post_forget_password(Request $request)
     {   
+        $contact = Contact::first();
         $villas = Villa::all();
         $user = User::where('email', '=', $request->email)->first();
         if($user == null) {
@@ -70,17 +78,18 @@ class UserController extends Controller
                 $message->to($request->email);
                 $message->subject('Lupa Password Akun ASA Hospitality');
             });
-            return view('user.membership.postforgetpassword', compact('villas')); 
+            return view('user.membership.postforgetpassword', compact('villas', 'contact')); 
         }
     }
 
     public function forget_password_verification($token)
     {   
         $villas = Villa::all();
+        $contact = Contact::first();
         $user = User::where('email_token', $token)->first();  
         $member = Member::where('id_user', $user->id)->first();       
         $reg = Registration::where('id_member', $member->id)->first();       
-        return view('user.membership.formforgetpassword', compact('user', 'member', 'reg', 'token', 'villas'));
+        return view('user.membership.formforgetpassword', compact('user', 'member', 'reg', 'token', 'villas', 'contact'));
     }
 
     public function update_password(Request $request, User $user)
@@ -228,21 +237,24 @@ class UserController extends Controller
 
     public function membership_index()
     {
+        $contact = Contact::first();
         $villas = Villa::all();
         $memberships = Membership::all();
-        return view('user.membership.index', compact('memberships', 'villas'));
+        return view('user.membership.index', compact('memberships', 'villas', 'contact'));
     }
 
     public function post_reg_membership_index()
     {
+        $contact = Contact::first();
         $villas = Villa::all();
-        return view('user.membership.postregistration', compact('villas'));
+        return view('user.membership.postregistration', compact('villas', 'contact'));
     }
 
     public function post_ver_membership_index()
     {
+        $contact = Contact::first();
         $villas = Villa::all();
-        return view('user.membership.postverification', compact('villas'));
+        return view('user.membership.postverification', compact('villas', 'contact'));
     }
 
     public function verification($token)

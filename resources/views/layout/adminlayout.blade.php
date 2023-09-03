@@ -156,7 +156,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#home-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-house"></i><span>Home</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-house"></i><span>Content Management</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="home-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -176,7 +176,22 @@
           </li>
           <li>
             <a href="">
-              <i class="bi bi-circle"></i><span>Villas</span>
+              <i class="bi bi-circle"></i><span>How We Work</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="bi bi-circle"></i><span>Facilities</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="bi bi-circle"></i><span>About Us</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('contact')}}">
+              <i class="bi bi-circle"></i><span>Contact Us</span>
             </a>
           </li>
         </ul>
@@ -186,6 +201,13 @@
         <a class="nav-link collapsed" href="{{route('villa')}}">
           <i class="bi bi-building-fill"></i>
           <span>List Villa</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('team')}}">
+          <i class="bi bi-people"></i>
+          <span>Team</span>
         </a>
       </li><!-- End Dashboard Nav -->
 

@@ -20,7 +20,7 @@
                             <a href="{{route('home')}}">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{route('guest_villa')}}">The Villa</a>
+                            The Villa
                         </li>
                     </ol>
                 </nav>

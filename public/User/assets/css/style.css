@@ -181,6 +181,7 @@ a:hover {
   line-height: 2;
   padding: 0;
   list-style: none;
+  
 }
 
 .list-a li {
@@ -189,13 +190,9 @@ a:hover {
   float: left;
   padding-left: 25px;
   padding-right: 5px;
+  width: 100%;
 }
 
-@media (min-width: 992px) {
-  .list-a li {
-    width: 100%;
-  }
-}
 
 .list-a li:before {
   content: "";
@@ -2455,9 +2452,14 @@ footer .credits {
   font-size: 14px;
 }
 
+.register {
+  background-color: #623b1a;
+  padding: 50px 0 50px 0;
+}
+
 .register .register-box {
   padding: 60px 40px;
-  box-shadow: 0 3px 20px -2px rgba(20, 45, 100, 0.1);
+  box-shadow: 0 3px 20px -2px rgba(232, 160, 73, 0.775);
   background: #fff;
   border-top: 4px solid #fff;
   border-radius: 5px;
@@ -2471,7 +2473,7 @@ footer .credits {
 
 .register .login-box {
   padding: 60px 40px;
-  box-shadow: 0 3px 20px -2px rgba(20, 45, 100, 0.1);
+  box-shadow: 0 3px 20px -2px rgba(232, 160, 73, 0.775);
   background: #fff;
   border-top: 4px solid #fff;
   border-radius: 5px;
@@ -2524,6 +2526,89 @@ footer .credits {
 
 .forget-password .email-forget-password-box .forget-password-info p {
   text-align: left;
+}
+
+/* Team Section - Home Page
+------------------------------*/
+.team {
+  --background-color: #f1ece7;
+}
+
+.team .member {
+  position: relative;
+}
+
+.team .member .member-img {
+  margin: 0 80px;
+  overflow: hidden;
+  position: relative;
+  border: 4px solid var(--background-color);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1024px) {
+  .team .member .member-img {
+    margin: 0 60px;
+  }
+}
+
+.team .member .member-img img {
+  position: relative;
+  z-index: 1;
+}
+
+.team .member .member-img .social {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  padding-bottom: 20px;
+  transition: 0.3s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.team .member .member-img .social a {
+  transition: 0.3s;
+  color: #f1ece7;
+  font-size: 20px;
+  margin: 0 8px;
+}
+
+.team .member .member-img .social a:hover {
+  color: #a67644;
+}
+
+.team .member .member-info {
+  margin-top: 30px;
+}
+
+.team .member .member-info h4 {
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.team .member .member-info span {
+  font-style: italic;
+  display: block;
+  font-size: 15px;
+  color: rgba(var(--default-color-rgb), 0.6);
+  margin-bottom: 10px;
+}
+
+.team .member .member-info p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.team .member:hover .member-img .social {
+  padding-bottom: 0;
+  visibility: visible;
+  opacity: 1;
 }
 
 
