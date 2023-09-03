@@ -101,12 +101,12 @@
                             <div class="card-overlay-a-content">
                                 <div class="card-header-a">
                                     <h2 class="card-title-a">
-                                        <a href="">{{$villa->nama_villa}}
+                                        <a href="{{url('villa-list', $villa->id)}}">{{$villa->nama_villa}}
                                     </h2>
                                     <p style="color: #fff">{{$villa->subtitle}}</p>
                                 </div>
                                 <div class="card-body-a">
-                                    <a href="#" class="link-a">Detail
+                                    <a href="{{url('villa-list', $villa->id)}}" class="link-a">Detail
                                         <span class="bi bi-chevron-right"></span>
                                     </a>
                                 </div>

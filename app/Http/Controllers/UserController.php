@@ -16,6 +16,8 @@ use App\Models\Slider;
 use App\Models\Greeting;
 use App\Models\Overview;
 use App\Models\Villa;
+use App\Models\Gallery;
+use App\Models\Amenity;
 use Mail;
 use Auth;
 use PDF;
@@ -39,6 +41,16 @@ class UserController extends Controller
     {
         $villas = Villa::all();
         return view('user.villa.index', compact('villas'));
+    }
+
+    public function villa_single_index($villa)
+    {
+        $villas = Villa::all();
+        $single_villa = Villa::where('id', $villa)->first();
+        $galleries = Gallery::where('id_villa', $villa)->get();
+        $features = Amenity::where('id_villa', $villa)->get();
+        $other_villas = Villa::where('id', '<>', $villa)->get();
+        return view('user.villa.single', compact('villas', 'single_villa', 'galleries', 'features', 'other_villas'));
     }
 
     public function fp_index()

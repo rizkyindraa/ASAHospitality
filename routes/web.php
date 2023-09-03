@@ -46,6 +46,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //villa
 Route::get('/villa-list', [UserController::class, 'villa_index'])->name('guest_villa');
+Route::get('/villa-list/{villa}', [UserController::class, 'villa_single_index']);
 
 route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() {
     

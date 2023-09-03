@@ -193,7 +193,7 @@ a:hover {
 
 @media (min-width: 992px) {
   .list-a li {
-    width: 33.333%;
+    width: 100%;
   }
 }
 
@@ -346,6 +346,29 @@ a:hover {
   vertical-align: middle;
 }
 
+.title-box-f {
+  padding-bottom: 1.8rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.title-box-f .title-f {
+  font-weight: 600;
+  font-size: 3rem;
+  color: #fff;
+}
+
+.title-box-f .title-f:after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 4px;
+  background-color: #a67644;
+  bottom: 20px;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
 .title-box-e {
   padding-bottom: 1.8rem;
   margin-bottom: 1rem;
@@ -462,6 +485,26 @@ a:hover {
 }
 
 .carousel-pagination .swiper-pagination-bullet-active {
+  background-color: #643c1b;
+  width: 36px;
+}
+
+.carousel-pagination-light {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.carousel-pagination-light .swiper-pagination-bullet {
+  width: 18px;
+  height: 10px;
+  background-color: #555;
+  margin: 0 4px;
+  border-radius: 5px;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.carousel-pagination-light .swiper-pagination-bullet-active {
   background-color: #643c1b;
   width: 36px;
 }
@@ -2365,7 +2408,6 @@ a:hover {
 --------------------------------------------------------------*/
 .section-footer {
   padding-top: 60px;
-  margin-top: 60px;
   background: #f1ece7;
   padding-bottom: 5px;
 }

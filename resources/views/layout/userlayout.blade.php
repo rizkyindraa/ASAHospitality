@@ -63,7 +63,7 @@
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">The Villas</a>
                         <div class="dropdown-menu">
                             @foreach($villas as $villa)
-                            <a class="dropdown-item " href="">{{$villa->nama_villa}}</a>
+                            <a class="dropdown-item " href="{{url('villa-list', $villa->id)}}">{{$villa->nama_villa}}</a>
                             @endforeach
                         </div>
                     </li>
