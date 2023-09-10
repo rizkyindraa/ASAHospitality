@@ -23,6 +23,7 @@
     <link href="{{asset('User/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
     <link href="{{asset('User/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
     <link href="{{asset('User/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+    <link href="{{asset('User/assets/vendor/aos/aos.css')}}" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
@@ -73,7 +74,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="">Facilities</a>
+                        <a class="nav-link" href="{{route('guest_facility')}}">Facilities</a>
                     </li>
 
                     <li class="nav-item">

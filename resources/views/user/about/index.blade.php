@@ -29,26 +29,24 @@
     </div>
 </section><!-- End Intro Single-->
 
-<section class="about mb-5 mt-2">
-    <div class="container">
-        <div class="title-box-e mb-5">
-            <h3 class="title-e" style="text-align: center">{{$about->title}}</h3>
-        </div>
-        <div class="row">
-            <div class="col-sm-5">
-                <div class="about-img">
-                    <img src="{{asset('assets/'. $about->about_picture)}}" class="about-pic">
+<section id="cta" class="cta mt-5 mb-5">
+    <div class="container" data-aos="zoom-out">
+
+        <div class="row g-5">
+
+            <div class="col-lg-6 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
+                <h3>{{$about->title}}</h3>
+                <p>{{$about->post}}</p>
+            </div>
+
+            <div class="col-lg-6 col-md-6 order-first order-md-last d-flex align-items-center">
+                <div class="img">
+                    <img src="{{asset('assets/'. $about->about_picture)}}" alt="" class="img-fluid">
                 </div>
             </div>
-            <div class="col-sm-7">
-                <div class="about-post">
-                    <p style="font-weight:bold; overflow: visible; overflow-wrap:anywhere;">
-                        {{$about->post}}
-                    </p>
-                </div>
-            </div>
+
         </div>
-        
+
     </div>
 </section>
 

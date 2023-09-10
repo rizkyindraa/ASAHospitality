@@ -13,6 +13,19 @@ class WorkController extends Controller
         return view('admin.work.index', compact('works'));
     }
 
+    public function work_search(Request $request)
+    {
+        $keyword = $request->cari;
+        $works = Work::where([
+                                ['title', 'like', "%".$keyword."%"]
+                            ])
+                            ->orWhere([
+                                ['subtitle', 'like', "%".$keyword."%"]
+                                ])
+                            ->latest()->paginate(10);
+        return view('admin.work.index', compact('works'));
+    }
+
     public function work_store(Request $request)
     {
         $request->validate([

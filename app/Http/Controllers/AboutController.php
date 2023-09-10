@@ -36,13 +36,13 @@ class AboutController extends Controller
     public function about_foto_update(Request $request, About $about)
     {
         $request->validate([
-            'about_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=600,min_height=800,max_width=4000,max_height=4000'
+            'about_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=600,min_height=600,max_width=4000,max_height=4000'
         ],
         [
             'about_picture.image' => 'Harus Berupa Gambar',
             'about_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
             'about_picture.max' => 'Maksimal size 2mb',
-            'about_picture.dimensions' => 'Resolusi Gambar Harus Lebih Dari 600x800'
+            'about_picture.dimensions' => 'Resolusi Gambar Harus Lebih Dari 600x600'
         ]);
 
         $pic = $request->file('about_picture');

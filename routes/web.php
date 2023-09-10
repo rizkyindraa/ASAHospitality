@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\WorkController;
+use App\Http\Controllers\FacilityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,9 @@ Route::get('/about-us', [UserController::class, 'about_index'])->name('guest_abo
 
 //how we work
 Route::get('/how-we-work', [UserController::class, 'work_index'])->name('guest_work');
+
+//facilities
+Route::get('/facilities', [UserController::class, 'facility_index'])->name('guest_facility');
 
 route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() {
     
@@ -157,6 +161,17 @@ route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() 
     Route::post('/store_work', [WorkController::class, 'work_store'])->name('store_work');
     Route::patch('/update_work/{work}', [WorkController::class, 'work_update'])->name('update_work');
     Route::get('/delete_work/{id}', [WorkController::class, 'work_destroy'])->name('delete_work');
+    Route::get('/work/cari', [WorkController::class, 'work_search'])->name('work_search');
+
+    //facilities
+    Route::get('/facility', [FacilityController::class, 'facility_index'])->name('facility');
+    Route::get('/create_facility', [FacilityController::class, 'facility_create'])->name('create_facility');
+    Route::post('/store_facility', [FacilityController::class, 'facility_store'])->name('store_facility');
+    Route::get('/edit_facility/{facility}', [FacilityController::class, 'facility_edit'])->name('edit_facility');
+    Route::patch('/update_facility_konten/{facility}', [FacilityController::class, 'facility_konten_update'])->name('update_facility_konten');
+    Route::patch('/update_facility_picture/{facility}', [FacilityController::class, 'facility_picture_update'])->name('update_facility_picture');
+    Route::get('/delete_facility/{id}', [FacilityController::class, 'facility_destroy'])->name('delete_facility');
+    Route::get('/facility/cari', [FacilityController::class, 'facility_search'])->name('facility_search');
 
 });
 

@@ -22,6 +22,7 @@ use App\Models\Contact;
 use App\Models\Team;
 use App\Models\About;
 use App\Models\Work;
+use App\Models\Facility;
 use Mail;
 use Auth;
 use PDF;
@@ -66,6 +67,15 @@ class UserController extends Controller
         $contact = Contact::first();
         $works = Work::all();
         return view('user.work.index', compact('villas', 'contact', 'works'));
+    }
+
+    //facility
+    public function facility_index()
+    {
+        $villas = Villa::all();
+        $contact = Contact::first();
+        $facilities = Facility::all();
+        return view('user.facilities.index', compact('villas', 'contact', 'facilities'));
     }
 
     //villa

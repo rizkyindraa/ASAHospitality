@@ -29,12 +29,12 @@
     </div>
 </section><!-- End Intro Single-->
 
-<div class="title-box-e mt-5">
+<div class="title-box-e mt-5" data-aos="fade-up">
     <h3 class="title-e" style="text-align: center">{{$single_villa->nama_villa}}</h3>
     <p style="text-align: center; font-size: 20px; font-weight: bold;">{{$single_villa->subtitle}}</p>
 </div>
 
-<section class="property-single nav-arrow-b mt-3 mb-5">
+<section class="property-single nav-arrow-b mt-3 mb-5" data-aos="fade-up">
     <div class="container">
         <div class="col-lg-12">
             <div class="row justify-content-center">

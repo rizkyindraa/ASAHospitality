@@ -151,52 +151,46 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#home-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-house"></i><span>Content Management</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" href="{{route('slider')}}">
+          <i class="bi bi-image"></i>
+          <span>Slider</span>
         </a>
-        <ul id="home-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="{{route('slider')}}">
-              <i class="bi bi-circle"></i><span>Slider</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('welcome')}}">
-              <i class="bi bi-circle"></i><span>Welcome</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('overview')}}">
-              <i class="bi bi-circle"></i><span>Overview</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('work')}}">
-              <i class="bi bi-circle"></i><span>How We Work</span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <i class="bi bi-circle"></i><span>Facilities</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('about')}}">
-              <i class="bi bi-circle"></i><span>About Us</span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <i class="bi bi-circle"></i><span>How to Get Here</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('contact')}}">
-              <i class="bi bi-circle"></i><span>Contact Us</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('welcome')}}">
+          <i class="bi bi-door-open"></i>
+          <span>Welcome</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('overview')}}">
+          <i class="bi bi-bookmark"></i>
+          <span>Overview</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('work')}}">
+          <i class="bi bi-diagram-3"></i>
+          <span>How We Work</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('facility')}}">
+          <i class="bi bi-box"></i>
+          <span>Facilities</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="">
+          <i class="bi bi-sign-turn-left"></i>
+          <span>How to Get Here</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('villa')}}">
@@ -209,6 +203,20 @@
         <a class="nav-link collapsed" href="{{route('team')}}">
           <i class="bi bi-people"></i>
           <span>Team</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('about')}}">
+          <i class="bi bi-journal"></i>
+          <span>About Us</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('contact')}}">
+          <i class="bi bi-telephone"></i>
+          <span>Contact Us</span>
         </a>
       </li><!-- End Dashboard Nav -->
 

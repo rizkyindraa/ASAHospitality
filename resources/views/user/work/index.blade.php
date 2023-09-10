@@ -33,11 +33,11 @@
 <section id="faq" class="faq mt-5 mb-5">
     <div class="container">
 
-        <div class="title-box-e mb-5">
+        <div class="title-box-e mb-5" data-aos="fade-up">
             <h3 class="title-e" style="text-align: center">How We Work</h3>
         </div>
         
-        <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-12" data-aos="fade-up">
 
             <div class="faq-container">
                 @if(!$works->isEmpty())

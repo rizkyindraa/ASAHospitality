@@ -1,16 +1,16 @@
 @extends('layout.adminlayout')
 
-@section('title', 'ASA Hospitality | Slider')
+@section('title', 'ASA Hospitality | Facility')
 
 @section('container')
 
 <div class="pagetitle">
     <div class="row g-2">
         <div class="col-md-6">
-            <h1>Edit Slider</h1>
+            <h1>Edit Facility</h1>
         </div>
         <div class="col-md-6">
-            <a href="{{route('slider')}}" class="btn btn-secondary mb-2" style="float:right;">Kembali <i
+            <a href="{{route('facility')}}" class="btn btn-secondary mb-2" style="float:right;">Kembali <i
                     class="bi bi-backspace"></i></a>
         </div>
     </div>
@@ -45,15 +45,16 @@
 
                     <div class="tab-pane fade show active profile-content pt-3" id="profile-content">
 
-                        <form method="POST" action="/update_slider_konten/{{ $slider->id }}">
+                        <form method="POST" action="{{url('update_facility_konten', $facility->id)}}">
                             @method('patch')
                             @csrf
                             <div class="row mb-3">
-                                <label for="title" class="col-md-4 col-lg-2 col-form-label">Title</label>
+                                <label for="facilities_name" class="col-md-4 col-lg-2 col-form-label">Nama Facility</label>
                                 <div class="col-md-8 col-lg-10">
-                                    <textarea name="title" class="form-control @error('title') is-invalid @enderror" id="title"
-                                        >{{ $slider->title }}</textarea>
-                                    @error('title')
+                                    <input name="facilities_name" type="text"
+                                        class="form-control @error('facilities_name') is-invalid @enderror" id="facilities_name"
+                                        value="{{ $facility->facilities_name }}">
+                                    @error('facilities_name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -64,9 +65,8 @@
                             <div class="row mb-3">
                                 <label for="subtitle" class="col-md-4 col-lg-2 col-form-label">Subtitle</label>
                                 <div class="col-md-8 col-lg-10">
-                                    <input name="subtitle" type="text"
-                                        class="form-control @error('subtitle') is-invalid @enderror" id="subtitle"
-                                        value="{{ $slider->subtitle }}">
+                                    <textarea name="subtitle" class="form-control @error('subtitle') is-invalid @enderror"
+                                        id="subtitle">{{ $facility->subtitle }}</textarea>
                                     @error('subtitle')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -85,17 +85,19 @@
                     <div class="tab-pane fade pt-3" id="picture">
                         <!-- Change Password Form -->
                         <!-- Profile Edit Form -->
-                        <form method="POST" action="/update_slider_picture/{{ $slider->id }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{url('update_facility_picture', $facility->id)}}"
+                            enctype="multipart/form-data">
                             @method('patch')
                             @csrf
-                            <img src="{{asset('assets/'. $slider->slider_picture)}}" alt="picture" style="width:20%; display: block; margin:auto; padding-bottom:10px;">
+                            <img src="{{asset('assets/'. $facility->facilities_picture)}}" alt="picture"
+                                style="width:20%; display: block; margin:auto; padding-bottom:10px;">
                             <div class="row mb-3">
-                                <label for="profileImage" class="col-md-4 col-lg-2 col-form-label">Background Image</label>
+                                <label for="profileImage" class="col-md-4 col-lg-2 col-form-label">Picture</label>
                                 <div class="col-md-8 col-lg-10">
                                     <div class="pt-2">
-                                        <input class="form-control @error('slider_picture') is-invalid @enderror" type="file"
-                                            id="slider_picture" name="slider_picture">
-                                        @error('slider_picture')
+                                        <input class="form-control @error('facilities_picture') is-invalid @enderror"
+                                            type="file" id="facilities_picture" name="facilities_picture">
+                                        @error('facilities_picture')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>

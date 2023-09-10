@@ -187,15 +187,17 @@
   /**
    * Animation on scroll function and init
    */
-  function aosInit() {
+  function aos_init() {
     AOS.init({
-      duration: 600,
+      duration: 1000,
       easing: 'ease-in-out',
       once: true,
       mirror: false
     });
   }
-  window.addEventListener('load', aosInit);
+  window.addEventListener('load', () => {
+    aos_init();
+  });
 
   /**
    * Testimonial carousel

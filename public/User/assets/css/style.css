@@ -2723,4 +2723,99 @@ footer .credits {
   color: #643c1b;
 }
 
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+.services .card {
+  border: 1px solid rgba(14, 29, 52, 0.15);
+  background: #623b1a;
+  position: relative;
+  border-radius: 0;
+  height: 100%;
+}
+
+.services .card .card-img {
+  overflow: hidden;
+  margin-bottom: 15px;
+  border-radius: 0;
+}
+
+.services .card h3 {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 5px;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #f1ece7;
+  transition: 0.3;
+  text-align: center;
+}
+
+.services .card p {
+  padding: 0 30px;
+  margin-bottom: 30px;
+  font-size: 15px;
+  color: #f1ece7;
+}
+
+/*--------------------------------------------------------------
+# Call To Action Section
+--------------------------------------------------------------*/
+.cta {
+  padding: 0;
+  margin-bottom: 60px;
+}
+
+.cta .container {
+  padding: 80px;
+  background: #f1ece7;
+  border-radius: 15px;
+}
+
+@media (max-width: 992px) {
+  .cta .container {
+    padding: 60px;
+  }
+}
+
+.cta .content h3 {
+  color: #485664;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.cta .content p {
+  color: #485664;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.cta .img {
+  position: relative;
+}
+
+.cta .img:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #a67644;
+  transform: rotate(12deg);
+}
+
+.cta .img:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #623b1a;
+  transform: rotate(6deg);
+}
+
+.cta .img img {
+  position: relative;
+  z-index: 3;
+}
+
+
+
 

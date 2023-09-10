@@ -39,7 +39,7 @@
     <div class="container">
 
         <div class="row pt-5 pb-5">
-            <div class="col-lg-6" style="padding: 50px">
+            <div class="col-lg-6" style="padding: 50px" data-aos="fade-right">
                 <div class="title-box-dx mt-5">
                     <h3 class="title-dx" style="text-align: center">{{$greeting->title}}</h3>
                 </div>
@@ -52,7 +52,7 @@
                         Here</a>
                 </div>
             </div>
-            <div class="col-lg-6" style="position: relative;">
+            <div class="col-lg-6" style="position: relative;" data-aos="fade-left">
                 <img src="{{asset('assets/'. $greeting->greeting_picture)}}" class="welcome-pic">
                 <a href="{{$greeting->yt_link}}" class="glightbox btn-watch-video d-flex align-items-center">
                     <i class="bi bi-play-circle"></i>
@@ -66,13 +66,13 @@
 <section class="section-overview">
     <div class="container">
         <div class="col-lg-12 overview-box">
-            <div class="title-box-e">
+            <div class="title-box-e" data-aos="fade-up">
                 <h3 class="title-e" style="text-align: center">{{$overview->title}}</h3>
             </div>
-            <div class="col-lg-12 flyer">
+            <div class="col-lg-12 flyer" data-aos="fade-up">
                 <img src="{{asset('assets/'. $overview->overview_picture)}}" class="overview-pic">
             </div>
-            <div class="col-lg-12 subtitle">
+            <div class="col-lg-12 subtitle" data-aos="fade-up">
                 <p>
                     {{$overview->subtitle}}
                 </p>
@@ -84,11 +84,11 @@
 <section class="section-property section-t8">
     <div class="container">
 
-        <div class="title-box-e mb-5">
+        <div class="title-box-e mb-5" data-aos="fade-up">
             <h3 class="title-e" style="text-align: center">The Villas</h3>
         </div>
 
-        <div id="property-carousel" class="swiper">
+        <div id="property-carousel" class="swiper" data-aos="fade-up">
             <div class="swiper-wrapper">
                 @if(!$villas->isEmpty())
                 @foreach($villas as $villa)

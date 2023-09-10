@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6 search-bar">
-                            <form class="search-form d-flex align-items-center" method="GET" action="">
+                            <form class="search-form d-flex align-items-center" method="GET" action="{{route('work_search')}}">
                               <input type="text" name="cari" placeholder="Cari" title="Enter search keyword">
                               <a type="submit" href="{{route('work')}}" class="btn-refresh" title="Search"><i class="bi bi-arrow-clockwise"></i></a>
                               <button type="submit" class="btn-search" title="Search"><i class="bi bi-search"></i></button>
@@ -98,7 +98,7 @@
                         <thead>
                             <tr>
                                 <th scope="col" style="text-align:center;width:50px;">#</th>
-                                <th scope="col" style="text-align:center;">Ttile</th>
+                                <th scope="col" style="text-align:center;">Title</th>
                                 <th scope="col" style="text-align:center;width:500px;">Subtitle</th>
                                 <th scope="col" style="text-align:center;width:109px;">Aksi</th>
                             </tr>

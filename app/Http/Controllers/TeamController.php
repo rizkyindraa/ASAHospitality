@@ -42,7 +42,7 @@ class TeamController extends Controller
             'no_hp' => 'required',
             'posisi' => 'required',
             'email' => 'required',
-            'foto' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=600,min_height=800,max_width=4000,max_height=4000'
+            'foto' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=600,min_height=600,max_width=4000,max_height=4000'
         ],
         [
             'nama.required' => 'Masukkan Nama',
@@ -53,7 +53,7 @@ class TeamController extends Controller
             'foto.image' => 'Harus Berupa Gambar',
             'foto.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
             'foto.max' => 'Maksimal size 2mb',
-            'foto.dimensions' => 'Resolusi Gambar Harus Lebih Dari 600x800'
+            'foto.dimensions' => 'Resolusi Gambar Harus Lebih Dari 600x600'
         ]);
 
         $pic = $request->file('foto');
@@ -170,13 +170,13 @@ class TeamController extends Controller
     public function team_foto_update(Request $request, Team $team)
     {
         $request->validate([
-            'foto' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=600,min_height=800,max_width=4000,max_height=4000'
+            'foto' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=600,min_height=600,max_width=4000,max_height=4000'
         ],
         [
             'foto.image' => 'Harus Berupa Gambar',
             'foto.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
             'foto.max' => 'Maksimal size 2mb',
-            'foto.dimensions' => 'Resolusi Gambar Harus Lebih Dari 600x800'
+            'foto.dimensions' => 'Resolusi Gambar Harus Lebih Dari 600x600'
         ]);
 
         $pic = $request->file('foto');
