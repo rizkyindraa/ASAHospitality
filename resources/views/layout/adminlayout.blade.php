@@ -29,10 +29,6 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('NiceAdmin/assets/css/style.css')}}" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Jul 27 2023 with Bootstrap v5.3.1
@@ -175,7 +171,7 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{{route('work')}}">
               <i class="bi bi-circle"></i><span>How We Work</span>
             </a>
           </li>
@@ -185,8 +181,13 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{{route('about')}}">
               <i class="bi bi-circle"></i><span>About Us</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="bi bi-circle"></i><span>How to Get Here</span>
             </a>
           </li>
           <li>
@@ -244,23 +245,6 @@
   <script src="{{asset('NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
   <script src="{{asset('NiceAdmin/assets/vendor/tinymce/tinymce.min.js')}}"></script>
   <script src="{{asset('NiceAdmin/assets/vendor/php-email-form/validate.js')}}"></script>
-  <script>
-    $(document).ready(function(){
-          var i=1;
-        $("#add_row").click(function(){b=i-1;
-          $('#addr'+i).html($('#addr'+b).html()).find('td:first-child').html(i+1);
-          $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
-          i++; 
-      });
-        $("#delete_row").click(function(){
-          if(i>1){
-        $("#addr"+(i-1)).html('');
-        i--;
-        }
-      });
-
-    });
-  </script>
 
   <!-- Template Main JS File -->
   <script src="{{asset('NiceAdmin/assets/js/main.js')}}"></script>

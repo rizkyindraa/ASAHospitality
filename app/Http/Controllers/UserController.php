@@ -20,6 +20,8 @@ use App\Models\Gallery;
 use App\Models\Amenity;
 use App\Models\Contact;
 use App\Models\Team;
+use App\Models\About;
+use App\Models\Work;
 use Mail;
 use Auth;
 use PDF;
@@ -27,9 +29,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
+    //home
     public function index()
     {
         $teams= Team::all();
@@ -41,6 +42,16 @@ class UserController extends Controller
         return view('user.home.index', compact('sliders', 'greeting', 'overview', 'villas', 'contact', 'teams'));
     }
 
+    //about
+    public function about_index()
+    {
+        $villas = Villa::all();
+        $contact = Contact::first();
+        $about = About::first();
+        return view('user.about.index', compact('villas', 'contact', 'about'));
+    }
+
+    //contact 
     public function contact_index()
     {
         $villas = Villa::all();
@@ -48,6 +59,16 @@ class UserController extends Controller
         return view('user.contact.index', compact('villas', 'contact'));
     }
 
+    //how we work
+    public function work_index()
+    {
+        $villas = Villa::all();
+        $contact = Contact::first();
+        $works = Work::all();
+        return view('user.work.index', compact('villas', 'contact', 'works'));
+    }
+
+    //villa
     public function villa_single_index($villa)
     {
         $contact = Contact::first();
@@ -59,6 +80,119 @@ class UserController extends Controller
         return view('user.villa.single', compact('villas', 'single_villa', 'galleries', 'features', 'other_villas', 'contact'));
     }
 
+    //membership
+    public function membership_index()
+    {
+        $contact = Contact::first();
+        $villas = Villa::all();
+        $memberships = Membership::all();
+        return view('user.membership.index', compact('memberships', 'villas', 'contact'));
+    }
+
+    public function member_store(Request $request)
+    {
+        $request->validate([
+            'nama_depan' => 'required',
+            'nama_belakang' => 'required',
+            'jenis_kelamin' => 'required',
+            'no_hp' => 'required|unique:members',
+            'email' => 'required|unique:users',
+            'username' => 'required|unique:users',
+            'password' => 'required',
+            'membership' => 'required',
+            'captcha' => 'required|captcha'
+        ],
+        [
+            'nama_depan.required' => 'Masukkan Nama Depan',
+            'nama_belakang.required' => 'Masukkan Nama Belakang',
+            'jenis_kelamin.required' => 'Pilih Jenis Kelamin',
+            'no_hp.required' => 'Masukkan Nomor HP',
+            'no_hp.unique' => 'Nomor Hp Sudah Terdaftar',
+            'email.required' => 'Masukkan Email',
+            'email.unique' => 'Email Sudah Terdaftar',
+            'username.required' => 'Masukkan Username',
+            'username.unique' => 'Username Sudah Terdaftar',
+            'password.required' => 'Masukkan Password',
+            'membership.required' => 'Pilih Membership',
+            'captcha.required' => 'Masukkan Captcha',
+            'captcha.captcha' => 'Invalid Captcha'
+        ]);
+
+        $user = User::create([
+                'email' => $request->email,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'is_verified' => '0',
+                'email_token' => Str::random(60),
+                'status' => '1',
+                'role' => 'member',
+                'pp_path' => 'default_pp.png',
+                'remember_token' => Str::random(60)
+                ]);
+        
+        $member = Member::create([
+                'nama_depan' => $request->nama_depan,
+                'nama_belakang' => $request->nama_belakang,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'no_hp' => $request->no_hp,
+                'id_user' => $user->id
+                ]);
+        
+        Registration::create([
+            'tgl_registrasi' => Carbon::now()->toDateString(),
+            'no_registrasi' => 'REG-'.Carbon::now()->format('d').Carbon::now()->format('m').Carbon::now()->year.$user->id,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'no_hp' => $request->no_hp,
+            'status_penerimaan_membership' => '0',
+            'id_member' => $member->id,
+            'id_membership' => $request->membership
+        ]);
+
+        Mail::send('email.emailverification', ['token' => $user->email_token], function($message) use($request){
+              $message->to($request->email);
+              $message->subject('Verifikasi Email ASA Hospitality');
+          });
+
+        return redirect('/membership/post-registration');
+    }
+
+    public function post_reg_membership_index()
+    {
+        $contact = Contact::first();
+        $villas = Villa::all();
+        return view('user.membership.postregistration', compact('villas', 'contact'));
+    }
+
+    public function post_ver_membership_index()
+    {
+        $contact = Contact::first();
+        $villas = Villa::all();
+        return view('user.membership.postverification', compact('villas', 'contact'));
+    }
+
+    public function verification($token)
+    {
+        $user = User::where('email_token', $token)->first();       
+        if($user->is_verified == 0) {
+            User::where('id', $user->id)
+            ->update([
+                'is_verified' => '1',
+                'email_verified_at' => Carbon::now()->toDateString()
+            ]);
+            $message = "Email berhasil di verifikasi, silahkan melakukan login";
+        } else if ($user->is_verified == 1) {
+            $message = "Email sudah terverifikasi. Silahkan melakukan login.";
+        }
+  
+      return redirect('/membership/post-verification')->with('message', $message);
+    }
+
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img('flat')]);
+    }
+
+    //forget password
     public function fp_index()
     {
         $contact = Contact::first();
@@ -109,6 +243,7 @@ class UserController extends Controller
         return view('user.membership.finalforgetpassword');
     }
 
+    //backoffice
     public function member_dashboard()
     {
         $member = Member::where('id_user', auth()->user()->id)->first();
@@ -235,50 +370,6 @@ class UserController extends Controller
         return redirect('/member/dashboard')->with('status', 'Edit Profile Picture Berhasil');
     }
 
-    public function membership_index()
-    {
-        $contact = Contact::first();
-        $villas = Villa::all();
-        $memberships = Membership::all();
-        return view('user.membership.index', compact('memberships', 'villas', 'contact'));
-    }
-
-    public function post_reg_membership_index()
-    {
-        $contact = Contact::first();
-        $villas = Villa::all();
-        return view('user.membership.postregistration', compact('villas', 'contact'));
-    }
-
-    public function post_ver_membership_index()
-    {
-        $contact = Contact::first();
-        $villas = Villa::all();
-        return view('user.membership.postverification', compact('villas', 'contact'));
-    }
-
-    public function verification($token)
-    {
-        $user = User::where('email_token', $token)->first();       
-        if($user->is_verified == 0) {
-            User::where('id', $user->id)
-            ->update([
-                'is_verified' => '1',
-                'email_verified_at' => Carbon::now()->toDateString()
-            ]);
-            $message = "Email berhasil di verifikasi, silahkan melakukan login";
-        } else if ($user->is_verified == 1) {
-            $message = "Email sudah terverifikasi. Silahkan melakukan login.";
-        }
-  
-      return redirect('/membership/post-verification')->with('message', $message);
-    }
-
-    public function reloadCaptcha()
-    {
-        return response()->json(['captcha'=> captcha_img('flat')]);
-    }
-
     public function voucher_store(Request $request)
     {
         $request->validate([
@@ -305,70 +396,5 @@ class UserController extends Controller
         return redirect('/member/voucher')->with('status', 'Tambah Voucher Berhasil');
     }
 
-    public function member_store(Request $request)
-    {
-        $request->validate([
-            'nama_depan' => 'required',
-            'nama_belakang' => 'required',
-            'jenis_kelamin' => 'required',
-            'no_hp' => 'required|unique:members',
-            'email' => 'required|unique:users',
-            'username' => 'required|unique:users',
-            'password' => 'required',
-            'membership' => 'required',
-            'captcha' => 'required|captcha'
-        ],
-        [
-            'nama_depan.required' => 'Masukkan Nama Depan',
-            'nama_belakang.required' => 'Masukkan Nama Belakang',
-            'jenis_kelamin.required' => 'Pilih Jenis Kelamin',
-            'no_hp.required' => 'Masukkan Nomor HP',
-            'no_hp.unique' => 'Nomor Hp Sudah Terdaftar',
-            'email.required' => 'Masukkan Email',
-            'email.unique' => 'Email Sudah Terdaftar',
-            'username.required' => 'Masukkan Username',
-            'username.unique' => 'Username Sudah Terdaftar',
-            'password.required' => 'Masukkan Password',
-            'membership.required' => 'Pilih Membership',
-            'captcha.required' => 'Masukkan Captcha',
-            'captcha.captcha' => 'Invalid Captcha'
-        ]);
-
-        $user = User::create([
-                'email' => $request->email,
-                'username' => $request->username,
-                'password' => Hash::make($request->password),
-                'is_verified' => '0',
-                'email_token' => Str::random(60),
-                'status' => '1',
-                'role' => 'member',
-                'pp_path' => 'default_pp.png',
-                'remember_token' => Str::random(60)
-                ]);
-        
-        $member = Member::create([
-                'nama_depan' => $request->nama_depan,
-                'nama_belakang' => $request->nama_belakang,
-                'jenis_kelamin' => $request->jenis_kelamin,
-                'no_hp' => $request->no_hp,
-                'id_user' => $user->id
-                ]);
-        
-        Registration::create([
-            'tgl_registrasi' => Carbon::now()->toDateString(),
-            'no_registrasi' => 'REG-'.Carbon::now()->format('d').Carbon::now()->format('m').Carbon::now()->year.$user->id,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'no_hp' => $request->no_hp,
-            'status_penerimaan_membership' => '0',
-            'id_member' => $member->id,
-            'id_membership' => $request->membership
-        ]);
-
-        Mail::send('email.emailverification', ['token' => $user->email_token], function($message) use($request){
-              $message->to($request->email);
-              $message->subject('Verifikasi Email ASA Hospitality');
-          });
-
-        return redirect('/membership/post-registration');
-    }
+    
 }

@@ -54,6 +54,10 @@
                         <a class="nav-link" href="{{route('home')}}">Home</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('guest_work')}}">How We Work</a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">The Villas</a>
@@ -65,18 +69,19 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="">How to Get Here</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Facilities</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route('membership')}}">Membership</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Us</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item " href="">About</a>
-                            <a class="dropdown-item " href="">How We Work</a>
-                            <a class="dropdown-item " href="">Facilities</a>
-                            <a class="dropdown-item " href="">How to Get Here</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('guest_about')}}">About Us</a>
                     </li>
 
                     <li class="nav-item">
@@ -126,7 +131,6 @@
                         </p>
                     </div>
                     <div class="credits">
-                        Designed by IndraRizky
                     </div>
                 </div>
             </div>

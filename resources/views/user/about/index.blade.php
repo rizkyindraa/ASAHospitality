@@ -1,6 +1,6 @@
 @extends('layout.userlayout')
 
-@section('title', 'Registrasi Membership - ASA Hospitality')
+@section('title', 'About Us - ASA Hospitality')
 
 @section('container')
 
@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-12 col-lg-8">
                 <div class="title-single-box">
-                    <h1 class="title-single">Memberships Plan</h1>
+                    <h1 class="title-single">About Us</h1>
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
@@ -19,11 +19,8 @@
                         <li class="breadcrumb-item">
                             <a href="{{route('home')}}">Home</a>
                         </li>
-                        <li class="breadcrumb-item" aria-current="page">
-                            <a href="{{route('membership')}}">Membership</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            Post Registration
+                        <li class="breadcrumb-item">
+                            About Us
                         </li>
                     </ol>
                 </nav>
@@ -32,20 +29,28 @@
     </div>
 </section><!-- End Intro Single-->
 
-<!-- ======= Contact Single ======= -->
-<section class="post-reg mb-4" id="post-reg">
+<section class="about mb-5 mt-2">
     <div class="container">
+        <div class="title-box-e mb-5">
+            <h3 class="title-e" style="text-align: center">{{$about->title}}</h3>
+        </div>
         <div class="row">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6">
-                <div class="post-reg-box">
-                    <h5>Registrasi Membership Berhasil</h5>
-                    <p>Silahkan melakukan verifikasi email, untuk melanjutkan proses registrasi</p>
+            <div class="col-sm-5">
+                <div class="about-img">
+                    <img src="{{asset('assets/'. $about->about_picture)}}" class="about-pic">
                 </div>
             </div>
-            <div class="col-lg-3"></div>
+            <div class="col-sm-7">
+                <div class="about-post">
+                    <p style="font-weight:bold; overflow: visible; overflow-wrap:anywhere;">
+                        {{$about->post}}
+                    </p>
+                </div>
+            </div>
         </div>
+        
     </div>
-</section><!-- End Contact Single-->
+</section>
+
 
 @endsection

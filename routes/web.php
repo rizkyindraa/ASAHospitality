@@ -9,6 +9,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VillaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\WorkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +53,12 @@ Route::get('/villa-list/{villa}', [UserController::class, 'villa_single_index'])
 
 //contact
 Route::get('/contact-us', [UserController::class, 'contact_index'])->name('guest_contact');
+
+//about us
+Route::get('/about-us', [UserController::class, 'about_index'])->name('guest_about');
+
+//how we work
+Route::get('/how-we-work', [UserController::class, 'work_index'])->name('guest_work');
 
 route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() {
     
@@ -138,6 +146,17 @@ route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() 
     Route::patch('/update_team_foto/{team}', [TeamController::class, 'team_foto_update'])->name('update_team_foto');
     Route::get('/delete_team/{id}', [TeamController::class, 'team_destroy'])->name('delete_team');
     Route::get('/team/cari', [TeamController::class, 'team_search'])->name('team_search');
+
+    //about
+    Route::get('/about', [AboutController::class, 'about_index'])->name('about');
+    Route::patch('/update_about_konten/{about}', [AboutController::class, 'about_konten_update'])->name('update_about_konten');
+    Route::patch('/update_about_foto/{about}', [AboutController::class, 'about_foto_update'])->name('update_about_foto');
+
+    //how we work
+    Route::get('/work', [WorkController::class, 'work_index'])->name('work');
+    Route::post('/store_work', [WorkController::class, 'work_store'])->name('store_work');
+    Route::patch('/update_work/{work}', [WorkController::class, 'work_update'])->name('update_work');
+    Route::get('/delete_work/{id}', [WorkController::class, 'work_destroy'])->name('delete_work');
 
 });
 

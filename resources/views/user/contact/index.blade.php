@@ -1,6 +1,6 @@
 @extends('layout.userlayout')
 
-@section('title', 'ASA Hospitality')
+@section('title', 'Contact Us - ASA Hospitality')
 
 @section('container')
 
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="icon-box-content">
                                     <p class="mb-1">Phone.
-                                        <span class="color-a">{{$contact->phone}}</span>
+                                        <span class="color-a">+62{{$contact->phone}}</span>
                                     </p>
                                 </div>
                             </div>

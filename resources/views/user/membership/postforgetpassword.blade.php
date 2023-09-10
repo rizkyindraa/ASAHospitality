@@ -1,6 +1,6 @@
 @extends('layout.userlayout')
 
-@section('title', 'ASA Hospitality')
+@section('title', 'Lupa Password - ASA Hospitality')
 
 @section('container')
 
@@ -33,7 +33,7 @@
 </section><!-- End Intro Single-->
 
 <!-- ======= Contact Single ======= -->
-<section class="post-reg" id="post-reg">
+<section class="post-reg mb-4" id="post-reg">
     <div class="container">
         <div class="row">
             <div class="col-lg-3"></div>

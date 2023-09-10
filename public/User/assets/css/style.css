@@ -2530,20 +2530,19 @@ footer .credits {
 
 /* Team Section - Home Page
 ------------------------------*/
-.team {
-  --background-color: #f1ece7;
-}
 
 .team .member {
   position: relative;
 }
 
 .team .member .member-img {
+  background-color: #f1ece7;
   margin: 0 80px;
   overflow: hidden;
   position: relative;
   border: 4px solid var(--background-color);
   box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.2);
+  
 }
 
 @media (max-width: 1024px) {
@@ -2583,7 +2582,7 @@ footer .credits {
 }
 
 .team .member .member-info {
-  margin-top: 30px;
+  padding: 20px 0 20px 0;
 }
 
 .team .member .member-info h4 {
@@ -2611,6 +2610,117 @@ footer .credits {
   opacity: 1;
 }
 
+.about .container {
+  padding: 30px;
+}
 
+.about .about-post h5 {
+  font-weight: bold;
+  text-align: center;
+}
+
+.about .about-post p {
+  text-align: justify;
+}
+
+.about .about-pic {
+  height: 100%;
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+@media (max-width: 1024px) {
+  .about .about-post {
+    margin-top: 10px;
+  }
+}
+
+/* Faq Section - Home Page
+------------------------------*/
+.faq .content h3 {
+  font-weight: 400;
+  font-size: 34px;
+}
+
+.faq .content p {
+  font-size: 15px;
+  color: rgba(33, 37, 41, 0.7);
+}
+
+.faq .faq-container .faq-item {
+  position: relative;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 5px 25px 0px rgba(33, 37, 41, 0.1);
+  overflow: hidden;
+}
+
+.faq .faq-container .faq-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq .faq-container .faq-item h3 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 30px 0 0;
+  transition: 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+}
+
+.faq .faq-container .faq-item h3 .num {
+  color: #643c1b;
+  padding-right: 5px;
+}
+
+.faq .faq-container .faq-item h3:hover {
+  color: #643c1b;
+}
+
+.faq .faq-container .faq-item .faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 0.3s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.faq .faq-container .faq-item .faq-content p {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.faq .faq-container .faq-item .faq-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  line-height: 0;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.faq .faq-container .faq-item .faq-toggle:hover {
+  color: #643c1b;
+}
+
+.faq .faq-container .faq-active h3 {
+  color: #643c1b;
+}
+
+.faq .faq-container .faq-active .faq-content {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  opacity: 1;
+  padding-top: 10px;
+}
+
+.faq .faq-container .faq-active .faq-toggle {
+  transform: rotate(90deg);
+  color: #643c1b;
+}
 
 

@@ -1,17 +1,8 @@
 @extends('layout.userlayout')
 
-@section('title', 'ASA Hospitality')
+@section('title', 'Lupa Password - ASA Hospitality')
 
 @section('container')
-
-<script>
-    function send(id) {
-        var selectedvalue = id;
-        document.getElementById("membership").value = selectedvalue;
-        console.log(selectedvalue);
-    }
-
-</script>
 
 <!-- ======= Intro Single ======= -->
 <section class="intro-single">
@@ -42,7 +33,7 @@
 </section><!-- End Intro Single-->
 
 <!-- ======= Contact Single ======= -->
-<section class="forget-password" id="forget-password">
+<section class="forget-password mb-4" id="forget-password">
     <div class="container">
             <div class="row">
                 <div class="col-lg-3"></div>

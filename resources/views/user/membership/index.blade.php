@@ -1,6 +1,6 @@
 @extends('layout.userlayout')
 
-@section('title', 'ASA Hospitality')
+@section('title', 'Membership - ASA Hospitality')
 
 @section('container')
 
