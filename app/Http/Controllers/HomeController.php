@@ -53,16 +53,15 @@ class HomeController extends Controller
         $request->validate([
             'title' => 'required',
             'subtitle' => 'required',
-            'slider_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=1280,min_height=720,max_width=4000,max_height=4000'
+            'slider_picture' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048'
         ],
         [
             'title.required' => 'Masukkan Title',
             'subtitle.required' => 'Masukkan Subtitle',
             'slider_picture.required' => 'Masukkan Background Image',
             'slider_picture.image' => 'Harus Berupa Gambar',
-            'slider_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
-            'slider_picture.max' => 'Maksimal size 2mb',
-            'slider_picture.dimensions' => 'Resolusi Gambar Harus Lebih Dari 1280x720'
+            'slider_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
+            'slider_picture.max' => 'Maksimal size 2mb'
         ]);
 
         $pic = $request->file('slider_picture');
@@ -108,13 +107,12 @@ class HomeController extends Controller
     public function slider_picture_update(Request $request, Slider $slider)
     {
         $request->validate([
-            'slider_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=1270,min_height=720,max_width=4000,max_height=4000'
+            'slider_picture' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048'
         ],
         [
             'slider_picture.image' => 'Harus Berupa Gambar',
-            'slider_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
-            'slider_picture.max' => 'Maksimal size 2mb',
-            'slider_picture.dimensions' => 'Resolusi Gambar Harus Lebih Dari 1280x720'
+            'slider_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
+            'slider_picture.max' => 'Maksimal size 2mb'
         ]);
 
         $pic = $request->file('slider_picture');
@@ -178,13 +176,12 @@ class HomeController extends Controller
     public function welcome_picture_update(Request $request, Greeting $greeting)
     {
         $request->validate([
-            'greeting_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=600,min_height=600,max_width=4000,max_height=4000'
+            'greeting_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ],
         [
             'greeting_picture.image' => 'Harus Berupa Gambar',
-            'greeting_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
-            'greeting_picture.max' => 'Maksimal size 2mb',
-            'greeting_picture.dimensions' => 'Resolusi Gambar Harus Lebih Dari 600x600'
+            'greeting_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
+            'greeting_picture.max' => 'Maksimal size 2mb'
         ]);
 
         $pic = $request->file('greeting_picture');
@@ -228,13 +225,12 @@ class HomeController extends Controller
     public function overview_picture_update(Request $request, Overview $overview)
     {
         $request->validate([
-            'overview_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=600,min_height=600,max_width=4000,max_height=4000'
+            'overview_picture' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048'
         ],
         [
             'overview_picture.image' => 'Harus Berupa Gambar',
-            'overview_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
-            'overview_picture.max' => 'Maksimal size 2mb',
-            'overview_picture.dimensions' => 'Resolusi Gambar Harus Lebih Dari 600x600'
+            'overview_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
+            'overview_picture.max' => 'Maksimal size 2mb'
         ]);
 
         $pic = $request->file('overview_picture');

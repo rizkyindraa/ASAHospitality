@@ -23,6 +23,7 @@ use App\Models\Team;
 use App\Models\About;
 use App\Models\Work;
 use App\Models\Facility;
+use App\Models\Way;
 use Mail;
 use Auth;
 use PDF;
@@ -76,6 +77,15 @@ class UserController extends Controller
         $contact = Contact::first();
         $facilities = Facility::all();
         return view('user.facilities.index', compact('villas', 'contact', 'facilities'));
+    }
+
+    //how to get here
+    public function here_index()
+    {
+        $villas = Villa::all();
+        $contact = Contact::first();
+        $ways = Way::all();
+        return view('user.here.index', compact('villas', 'contact', 'ways'));
     }
 
     //villa
@@ -344,13 +354,12 @@ class UserController extends Controller
     public function update_pp_member(Request $request, User $member)
     {   
         $request->validate([
-            'pp' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048|dimensions:min_width=600,min_height=600,max_width=2000,max_height=2000'
+            'pp' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048'
         ],
         [
             'pp.image' => 'Harus Berupa Gambar',
             'pp.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
-            'pp.max' => 'Maksimal size 2mb',
-            'pp.dimensions' => 'Minimal 600x600, dan Maksimal 2000x2000'
+            'pp.max' => 'Maksimal size 2mb'
         ]); 
 
         $pic = $request->file('pp');

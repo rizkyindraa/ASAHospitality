@@ -40,12 +40,12 @@
         <div class="row gy-4 justify-content-center">
             @if(!$facilities->isEmpty())
             @foreach($facilities as $facility)
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="card">
+            <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="cards">
                     <div class="card-img">
                         <img src="{{asset('assets/'. $facility->facilities_picture)}}" alt="" class="img-fluid">
                     </div>
-                    <h3>{{$facility->facilities_name}}</h3>
+                    <h3 class="title-sm">{{$facility->facilities_name}}</h3>
                     <p>{{$facility->subtitle}}</p>
                 </div>
             </div><!-- End Card Item -->
@@ -57,3 +57,5 @@
 
     </div>
 </section><!-- End Services Section -->
+
+@endsection

@@ -12,6 +12,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\HereController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,9 @@ Route::get('/how-we-work', [UserController::class, 'work_index'])->name('guest_w
 
 //facilities
 Route::get('/facilities', [UserController::class, 'facility_index'])->name('guest_facility');
+
+//how to get here
+Route::get('/how-to-get-here', [UserController::class, 'here_index'])->name('guest_here');
 
 route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() {
     
@@ -172,6 +176,16 @@ route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() 
     Route::patch('/update_facility_picture/{facility}', [FacilityController::class, 'facility_picture_update'])->name('update_facility_picture');
     Route::get('/delete_facility/{id}', [FacilityController::class, 'facility_destroy'])->name('delete_facility');
     Route::get('/facility/cari', [FacilityController::class, 'facility_search'])->name('facility_search');
+
+    //how to ger here
+    Route::get('/get_here', [HereController::class, 'here_index'])->name('here');
+    Route::get('/create_get_here', [HereController::class, 'here_create'])->name('create_here');
+    Route::post('/store_get_here', [HereController::class, 'here_store'])->name('store_here');
+    Route::get('/edit_get_here/{way}', [HereController::class, 'here_edit'])->name('edit_get_here');
+    Route::patch('/update_get_here_konten/{way}', [HereController::class, 'here_konten_update'])->name('update_here_konten');
+    Route::patch('/update_get_here_picture/{way}', [HereController::class, 'here_picture_update'])->name('update_here_picture');
+    Route::get('/delete_get_here/{id}', [HereController::class, 'here_destroy'])->name('delete_here');
+    Route::get('/here/cari', [HereController::class, 'here_search'])->name('here_search');
 
 });
 

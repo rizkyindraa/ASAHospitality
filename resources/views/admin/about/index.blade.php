@@ -55,9 +55,10 @@
                             <div class="row mb-3">
                                 <label for="post" class="col-md-4 col-lg-2 col-form-label">Post</label>
                                 <div class="col-md-8 col-lg-10">
-                                    <textarea name="post"
-                                        class="form-control @error('post') is-invalid @enderror" id="post"
-                                        >{{ $about->post }}</textarea>
+                                    <input type="hidden" class="form-control @error('post') is-invalid @enderror"
+                                        id="post" name="post" placeholder="Silahkan input post"
+                                        value="{{ $about->post }}">
+                                    <trix-editor input="post"></trix-editor>
                                     @error('post')
                                     <div class="invalid-feedback">
                                         {{ $message }}

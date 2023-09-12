@@ -410,6 +410,11 @@ a:hover {
   font-size: 2rem;
 }
 
+.title-box-sm .title-sm {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
 .title-box-d .title-d:after {
   content: "";
   position: absolute;
@@ -420,6 +425,17 @@ a:hover {
 }
 
 .title-box-dx .title-dx:after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 4px;
+  background-color: #643c1b;
+  bottom: 20px;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+.title-box-sm .title-sm:after {
   content: "";
   position: absolute;
   width: 150px;
@@ -2202,7 +2218,7 @@ a:hover {
   padding: 20px 70px 20px 70px;
 }
 
-.section-overview .overview-box .subtitle p {
+.section-overview .overview-box .subtitle div {
   text-align: center; 
   font-weight:bold; 
   overflow: visible; 
@@ -2726,37 +2742,35 @@ footer .credits {
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
-.services .card {
-  border: 1px solid rgba(14, 29, 52, 0.15);
-  background: #623b1a;
+.services .cards {
   position: relative;
-  border-radius: 0;
   height: 100%;
 }
 
-.services .card .card-img {
+.services .cards .card-img {
   overflow: hidden;
   margin-bottom: 15px;
   border-radius: 0;
 }
 
-.services .card h3 {
+.services .cards h3 {
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 5px;
   padding: 10px 30px;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
-  color: #f1ece7;
+  color: #643c1b;
   transition: 0.3;
   text-align: center;
 }
 
-.services .card p {
+.services .cards p {
   padding: 0 30px;
   margin-bottom: 30px;
   font-size: 15px;
-  color: #f1ece7;
+  color: #485664;
+  text-align: center;
 }
 
 /*--------------------------------------------------------------
@@ -2785,7 +2799,7 @@ footer .credits {
   font-weight: 700;
 }
 
-.cta .content p {
+.cta .content div {
   color: #485664;
   font-weight: 600;
   font-size: 15px;
@@ -2814,6 +2828,36 @@ footer .credits {
 .cta .img img {
   position: relative;
   z-index: 3;
+}
+
+.features {
+  padding-top: 80px;
+}
+
+.features .features-item+.features-item {
+  margin-top: 100px;
+}
+
+@media (max-width: 640px) {
+  .features .features-item+.features-item {
+    margin-top: 40px;
+  }
+}
+
+.features .features-item h3 {
+  font-weight: 600;
+  font-size: 26px;
+  color: #623b1a;
+}
+
+.features .features-item p {
+  font-weight: 600;
+  font-size: 18px;
+  color: #485664;
+}
+
+.features .features-item p:last-child {
+  margin-bottom: 0;
 }
 
 

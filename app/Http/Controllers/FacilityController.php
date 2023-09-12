@@ -42,16 +42,15 @@ class FacilityController extends Controller
         $request->validate([
             'facilities_name' => 'required',
             'subtitle' => 'required',
-            'facilities_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=800,min_height=600,max_width=4000,max_height=4000'
+            'facilities_picture' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048'
         ],
         [
             'facilities_name.required' => 'Masukkan Nama Facility',
             'subtitle.required' => 'Masukkan Subtitle',
             'facilities_picture.required' => 'Masukkan Gambar',
             'facilities_picture.image' => 'Harus Berupa Gambar',
-            'facilities_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
-            'facilities_picture.max' => 'Maksimal size 2mb',
-            'facilities_picture.dimensions' => 'Resolusi Gambar Harus Lebih Dari 800x600'
+            'facilities_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
+            'facilities_picture.max' => 'Maksimal size 2mb'
         ]);
 
         $pic = $request->file('facilities_picture');
@@ -91,13 +90,12 @@ class FacilityController extends Controller
     public function facility_picture_update(Request $request, Facility $facility)
     {
         $request->validate([
-            'facilities_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=800,min_height=600,max_width=4000,max_height=4000'
+            'facilities_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ],
         [
             'facilities_picture.image' => 'Harus Berupa Gambar',
-            'facilities_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
-            'facilities_picture.max' => 'Maksimal size 2mb',
-            'facilities_picture.dimensions' => 'Resolusi Gambar Harus Lebih Dari 800x600'
+            'facilities_picture.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
+            'facilities_picture.max' => 'Maksimal size 2mb'
         ]);
 
         $pic = $request->file('facilities_picture');

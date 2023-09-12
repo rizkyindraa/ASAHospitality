@@ -26,6 +26,9 @@
   <link href="{{asset('NiceAdmin/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{asset('NiceAdmin/assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
 
+  <link rel="stylesheet" type="text/css" href="{{asset('trix/css/trix.css')}}">
+  <script type="text/javascript" src="{{asset('trix/js/trix.js')}}"></script>
+
   <!-- Template Main CSS File -->
   <link href="{{asset('NiceAdmin/assets/css/style.css')}}" rel="stylesheet">
 
@@ -186,7 +189,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="{{route('here')}}">
           <i class="bi bi-sign-turn-left"></i>
           <span>How to Get Here</span>
         </a>

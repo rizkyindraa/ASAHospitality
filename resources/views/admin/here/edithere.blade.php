@@ -1,11 +1,19 @@
 @extends('layout.adminlayout')
 
-@section('title', 'ASA Hospitality | Welcome')
+@section('title', 'ASA Hospitality | How to Get Here')
 
 @section('container')
 
 <div class="pagetitle">
-    <h1>Section Overview</h1>
+    <div class="row g-2">
+        <div class="col-md-6">
+            <h1>Edit How to Get Here</h1>
+        </div>
+        <div class="col-md-6">
+            <a href="{{route('here')}}" class="btn btn-secondary mb-2" style="float:right;">Kembali <i
+                    class="bi bi-backspace"></i></a>
+        </div>
+    </div>
 </div><!-- End Page Title -->
 
 @if (session('status'))
@@ -29,7 +37,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#picture">Overview Image</button>
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#picture">Picture</button>
                     </li>
 
                 </ul>
@@ -37,14 +45,16 @@
 
                     <div class="tab-pane fade show active profile-content pt-3" id="profile-content">
 
-                        <form method="POST" action="/update_overview_konten/{{$overview->id}}">
+                        <form method="POST" action="{{url('update_get_here_konten', $way->id)}}">
                             @method('patch')
                             @csrf
                             <div class="row mb-3">
-                                <label for="title" class="col-md-4 col-lg-2 col-form-label">Title</label>
+                                <label for="way_name" class="col-md-4 col-lg-2 col-form-label">How to Get Here</label>
                                 <div class="col-md-8 col-lg-10">
-                                    <input name="title" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ $overview->title }}">
-                                    @error('title')
+                                    <input name="way_name" type="text"
+                                        class="form-control @error('way_name') is-invalid @enderror" id="way_name"
+                                        value="{{ $way->way_name }}">
+                                    @error('way_name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -55,11 +65,23 @@
                             <div class="row mb-3">
                                 <label for="subtitle" class="col-md-4 col-lg-2 col-form-label">Subtitle</label>
                                 <div class="col-md-8 col-lg-10">
-                                    <input type="hidden" class="form-control @error('subtitle') is-invalid @enderror"
-                                        id="subtitle" name="subtitle" placeholder="Silahkan input subtitle"
-                                        value="{{ $overview->subtitle }}">
-                                    <trix-editor input="subtitle"></trix-editor>
+                                    <textarea name="subtitle" class="form-control @error('subtitle') is-invalid @enderror"
+                                        id="subtitle">{{ $way->subtitle }}</textarea>
                                     @error('subtitle')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="description" class="col-md-4 col-lg-2 col-form-label">Deskripsi</label>
+                                <div class="col-md-8 col-lg-10">
+                                    <input name="description" class="form-control @error('description') is-invalid @enderror"
+                                        id="description" value="{{ $way->description }}" type="hidden">
+                                    <trix-editor input="description"></trix-editor>    
+                                    @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -77,28 +99,31 @@
                     <div class="tab-pane fade pt-3" id="picture">
                         <!-- Change Password Form -->
                         <!-- Profile Edit Form -->
-                        <form method="POST" action="/update_overview_picture/{{$overview->id}}" enctype="multipart/form-data">
+                        <form method="POST" action="{{url('update_get_here_picture', $way->id)}}"
+                            enctype="multipart/form-data">
                             @method('patch')
                             @csrf
-                            <img src="{{asset('assets/'. $overview->overview_picture)}}" alt="picture" style="width:20%; display: block; margin:auto; padding-bottom:10px;">
+                            <img src="{{asset('assets/'. $way->way_picture)}}" alt="picture"
+                                style="width:20%; display: block; margin:auto; padding-bottom:10px;">
                             <div class="row mb-3">
-                                <label for="profileImage" class="col-md-4 col-lg-2 col-form-label">Overview Image</label>
+                                <label for="profileImage" class="col-md-4 col-lg-2 col-form-label">Picture</label>
                                 <div class="col-md-8 col-lg-10">
                                     <div class="pt-2">
-                                        <input class="form-control @error('overview_picture') is-invalid @enderror" type="file"
-                                            id="overview_picture" name="overview_picture">
-                                        @error('overview_picture')
+                                        <input class="form-control @error('way_picture') is-invalid @enderror"
+                                            type="file" id="way_picture" name="way_picture">
+                                        @error('way_picture')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                         @enderror
+                                        <button type="submit" class="btn btn-primary"
+                                            style="margin-top: 10px; float:right;"><i class="bi bi-upload">
+                                            </i></button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary" style="float:right;">Edit</button>
-                            </div>
                         </form>
+
                     </div>
 
                 </div><!-- End Bordered Tabs -->

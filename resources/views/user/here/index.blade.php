@@ -1,6 +1,6 @@
 @extends('layout.userlayout')
 
-@section('title', 'About Us - ASA Hospitality')
+@section('title', 'How to Get Here - ASA Hospitality')
 
 @section('container')
 
@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-12 col-lg-8">
                 <div class="title-single-box">
-                    <h1 class="title-single">About Us</h1>
+                    <h1 class="title-single">How to Get Here</h1>
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
@@ -20,7 +20,7 @@
                             <a href="{{route('home')}}">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            About Us
+                            How to Get Here
                         </li>
                     </ol>
                 </nav>
@@ -29,26 +29,25 @@
     </div>
 </section><!-- End Intro Single-->
 
-<section id="cta" class="cta mt-5 mb-5">
-    <div class="container" data-aos="zoom-out">
-
-        <div class="row g-5">
-
-            <div class="col-lg-6 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
-                <h3>{{$about->title}}</h3>
-                {!!$about->post!!}
+<section id="features" class="features mb-5">
+    <div class="container">
+        @if(!$ways->isEmpty())
+        @foreach($ways as $way)
+        <div class="row gy-4 align-items-center features-item" data-aos="fade-up">
+            <div class="col-md-6">
+                <img src="{{asset('assets/'. $way->way_picture)}}" class="img-fluid" alt="">
             </div>
-
-            <div class="col-lg-6 col-md-6 order-first order-md-last d-flex align-items-center">
-                <div class="img">
-                    <img src="{{asset('assets/'. $about->about_picture)}}" alt="" class="img-fluid">
-                </div>
+            <div class="col-md-6">
+                <h3>{{$way->way_name}}</h3>
+                <p>{{$way->subtitle}}</p>
+                {!!$way->description!!}
             </div>
-
-        </div>
-
+        </div><!-- Features Item -->
+        @endforeach
+        @else
+        <h5 style="text-align: center; font-weight: bold;">Tidak Ada Data</h5>
+        @endif
     </div>
-</section>
-
+</section><!-- End Features Section -->
 
 @endsection

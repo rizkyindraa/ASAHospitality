@@ -73,9 +73,7 @@
                 <img src="{{asset('assets/'. $overview->overview_picture)}}" class="overview-pic">
             </div>
             <div class="col-lg-12 subtitle" data-aos="fade-up">
-                <p>
-                    {{$overview->subtitle}}
-                </p>
+                    {!!$overview->subtitle!!}
             </div>
 
         </div>

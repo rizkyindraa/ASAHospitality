@@ -65,8 +65,8 @@ class VillaController extends Controller
             'occupancy' => 'required',
             'bed_type' => 'required',
             'deskripsi' => 'required',
-            'display' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=600,min_height=800,max_width=4000,max_height=4000',
-            'floor_plan' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=1280,min_height=720,max_width=4000,max_height=4000'
+            'display' => 'image|mimes:jpg,png,jpeg,svg|max:2048',
+            'floor_plan' => 'image|mimes:jpg,png,jpeg,svg|max:2048'
         ],
         [
             'nama_villa.required' => 'Masukkan Nama Villa',
@@ -75,13 +75,11 @@ class VillaController extends Controller
             'occupancy.required' => 'Masukkan Occupancy',
             'bed_type.required' => 'Masukkan Bed Type',
             'display.image' => 'Harus Berupa Gambar',
-            'display.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
+            'display.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
             'display.max' => 'Maksimal size 2mb',
-            'display.dimensions' => 'Resolusi Gambar Harus Lebih Dari 600x800',
             'floor_plan.image' => 'Harus Berupa Gambar',
-            'floor_plan.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
-            'floor_plan.max' => 'Maksimal size 2mb',
-            'floor_plan.dimensions' => 'Resolusi Gambar Harus Lebih Dari 1280x720'
+            'floor_plan.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
+            'floor_plan.max' => 'Maksimal size 2mb'
         ]);
 
         $file = public_path('/assets');
@@ -132,14 +130,13 @@ class VillaController extends Controller
     public function gallery_store(Request $request, $villa)
     {
         $request->validate([
-            'gallery' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=1250,min_height=720,max_width=4000,max_height=4000'
+            'gallery' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048'
         ],
         [
             'gallery.required' => 'Masukkan Gambar',
             'gallery.image' => 'Harus Berupa Gambar',
-            'gallery.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
-            'gallery.max' => 'Maksimal size 2mb',
-            'gallery.dimensions' => 'Resolusi Gambar Harus Lebih Dari 1250x720'
+            'gallery.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
+            'gallery.max' => 'Maksimal size 2mb'
         ]);
 
         $pic = $request->file('gallery');
@@ -218,13 +215,12 @@ class VillaController extends Controller
     public function villa_picture_update(Request $request, Villa $villa)
     {
         $request->validate([
-            'floor_plan' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=1250,min_height=720,max_width=4000,max_height=4000'
+            'floor_plan' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048'
         ],
         [
             'floor_plan.image' => 'Harus Berupa Gambar',
-            'floor_plan.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
-            'floor_plan.max' => 'Maksimal size 2mb',
-            'floor_plan.dimensions' => 'Resolusi Gambar Harus Lebih Dari 1250x720'
+            'floor_plan.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
+            'floor_plan.max' => 'Maksimal size 2mb'
         ]);
 
         $pic = $request->file('floor_plan');
@@ -245,13 +241,12 @@ class VillaController extends Controller
     public function villa_display_update(Request $request, Villa $villa)
     {
         $request->validate([
-            'display' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=600,min_height=800,max_width=4000,max_height=4000'
+            'display' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048'
         ],
         [
             'display.image' => 'Harus Berupa Gambar',
-            'display.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
-            'display.max' => 'Maksimal size 2mb',
-            'display.dimensions' => 'Resolusi Gambar Harus Lebih Dari 600x800'
+            'display.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
+            'display.max' => 'Maksimal size 2mb'
         ]);
 
         $pic = $request->file('display');
@@ -272,13 +267,12 @@ class VillaController extends Controller
     public function gallery_update(Request $request, Gallery $gallery)
     {
         $request->validate([
-            'gallery' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=1280,min_height=720,max_width=4000,max_height=4000'
+            'gallery' => 'required|image|mimes:jpg,png,jpeg,svg|max:2048'
         ],
         [
             'gallery.image' => 'Harus Berupa Gambar',
-            'gallery.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, .gif, dan .svg',
-            'gallery.max' => 'Maksimal size 2mb',
-            'gallery.dimensions' => 'Resolusi Gambar Harus Lebih Dari 1280x720'
+            'gallery.mimes' => 'Format yang didukung hanya .jpg, .png, .jpeg, dan .svg',
+            'gallery.max' => 'Maksimal size 2mb'
         ]);
 
         $pic = $request->file('gallery');

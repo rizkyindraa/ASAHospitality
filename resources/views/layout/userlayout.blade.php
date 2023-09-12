@@ -70,7 +70,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="">How to Get Here</a>
+                        <a class="nav-link" href="{{route('guest_here')}}">How to Get Here</a>
                     </li>
 
                     <li class="nav-item">
