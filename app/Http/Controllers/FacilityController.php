@@ -27,13 +27,9 @@ class FacilityController extends Controller
     public function facility_search(Request $request)
     {
         $keyword = $request->cari;
-        $facilities = Facility::where([
-                                ['facilities_name', 'like', "%".$keyword."%"]
-                            ])
-                            ->orWhere([
-                                ['subtitle', 'like', "%".$keyword."%"]
-                                ])
-                            ->latest()->paginate(10);
+        $facilities = Facility::where('facilities_name', 'like', "%".$keyword."%")
+                                ->orWhere('subtitle', 'like', "%".$keyword."%")
+                                ->latest()->paginate(10);
         return view('admin.facility.index', compact('facilities'));
     }
 

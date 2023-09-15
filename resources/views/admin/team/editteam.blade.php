@@ -1,6 +1,6 @@
 @extends('layout.adminlayout')
 
-@section('title', 'ASA Hospitality | Villa')
+@section('title', 'ASA Hospitality | Team')
 
 @section('container')
 

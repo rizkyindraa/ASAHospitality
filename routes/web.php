@@ -68,7 +68,7 @@ Route::get('/facilities', [UserController::class, 'facility_index'])->name('gues
 //how to get here
 Route::get('/how-to-get-here', [UserController::class, 'here_index'])->name('guest_here');
 
-route::group(['middleware' => ['auth','cekrole:superadmin, admin']], function() {
+route::group(['middleware' => ['auth','cekrole:superadmin,admin']], function() {
     
     //dashboard
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -205,6 +205,21 @@ route::group(['middleware' => ['auth','cekrole:member']], function() {
     Route::post('/member/store-voucher', [UserController::class, 'voucher_store'])->name('store_voucher');
     Route::get('/member/voucher/cari/', [UserController::class, 'voucher_search'])->name('voucher_search');
     Route::get('/member/voucher/e-voucher/{voucher}', [UserController::class, 'voucher_print']);
+});
+
+route::group(['middleware' => ['auth','cekrole:superadmin']], function() {
+    
+    //admin management
+    Route::get('/admin_management', [AdminController::class, 'admin_index'])->name('admin');
+    Route::get('/create_admin', [AdminController::class, 'admin_create'])->name('create_admin');
+    Route::post('/store_admin', [AdminController::class, 'admin_store'])->name('store_admin');
+    Route::get('/status_admin/{id}', [AdminController::class, 'admin_status'])->name('status_admin');
+    Route::get('/edit_admin/{user}', [AdminController::class, 'admin_edit'])->name('edit_admin');
+    Route::patch('/update_admin_akun/{user}', [AdminController::class, 'admin_akun_update'])->name('update_admin_akun');
+    Route::patch('/update_admin_password/{user}', [AdminController::class, 'admin_password_update'])->name('update_admin_password');
+    Route::get('/delete_admin/{id}', [AdminController::class, 'admin_destroy'])->name('delete_admin');
+    Route::get('/admin_management/cari', [AdminController::class, 'admin_search'])->name('admin_search');
+
 });
 
 

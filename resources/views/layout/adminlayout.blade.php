@@ -113,9 +113,9 @@
 
       @if(auth()->user()->role=="superadmin")
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="{{route('admin')}}">
           <i class="bi bi-person-vcard"></i>
-          <span>User Management</span>
+          <span>Admin Management</span>
         </a>
       </li><!-- End Dashboard Nav -->
       @endif
