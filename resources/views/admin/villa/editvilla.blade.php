@@ -206,7 +206,7 @@
                             <img src="{{asset('assets/'. $villa->display)}}" alt="picture"
                                 style="width:20%; display: block; margin:auto; padding-bottom:10px;">
                             <div class="row mb-3">
-                                <label for="profileImage" class="col-md-4 col-lg-2 col-form-label">Display</label>
+                                <label for="profileImage" class="col-md-4 col-lg-2 col-form-label">Display Picture <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 1920x1080"></i></label>
                                 <div class="col-md-8 col-lg-10">
                                     <div class="pt-2">
                                         <input class="form-control @error('display') is-invalid @enderror"
@@ -236,7 +236,7 @@
                             <img src="{{asset('assets/'. $villa->floor_plan)}}" alt="picture"
                                 style="width:20%; display: block; margin:auto; padding-bottom:10px;">
                             <div class="row mb-3">
-                                <label for="profileImage" class="col-md-4 col-lg-2 col-form-label">Floor Plan</label>
+                                <label for="profileImage" class="col-md-4 col-lg-2 col-form-label">Floor Plan <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 1920x1080"></i></label>
                                 <div class="col-md-8 col-lg-10">
                                     <div class="pt-2">
                                         <input class="form-control @error('floor_plan') is-invalid @enderror"

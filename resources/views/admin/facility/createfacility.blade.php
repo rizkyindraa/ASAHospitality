@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="facilities_picture" class="form-label">Facility Picture</label>
+                            <label for="facilities_picture" class="form-label">Facility Picture <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 800x600"></i></label>
                             <input class="form-control @error('facilities_picture') is-invalid @enderror" type="file" id="facilities_picture"
                                 name="facilities_picture">
                             @error('facilities_picture')

@@ -137,7 +137,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="display" class="form-label">Display Picture</label>
+                            <label for="display" class="form-label">Display Picture <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 1920x1080"></i></label>
                             <input class="form-control @error('display') is-invalid @enderror" type="file"
                                 id="display" name="display">
                             <p style="font-size: 10px">rekomendasi resolusi 600x800 untuk tampilan yang lebih baik</p>
@@ -149,7 +149,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="floor_plan" class="form-label">Floor Plan</label>
+                            <label for="floor_plan" class="form-label">Floor Plan <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 1920x1080"></i></label>
                             <input class="form-control @error('floor_plan') is-invalid @enderror" type="file"
                                 id="floor_plan" name="floor_plan">
                             @error('floor_plan')

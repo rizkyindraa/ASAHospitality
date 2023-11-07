@@ -142,7 +142,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="foto" class="form-label">Foto</label>
+                            <label for="foto" class="form-label">Foto <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 600x600"></i></label>
                             <input class="form-control @error('foto') is-invalid @enderror" type="file" id="foto"
                                 name="foto">
                             @error('foto')

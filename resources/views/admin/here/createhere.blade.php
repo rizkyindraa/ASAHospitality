@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="way_picture" class="form-label">Picture</label>
+                            <label for="way_picture" class="form-label">Picture <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 800x600"></i></label>
                             <input class="form-control @error('way_picture') is-invalid @enderror" type="file" id="way_picture"
                                 name="way_picture">
                             @error('way_picture')

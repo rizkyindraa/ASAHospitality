@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="slider_picture" class="form-label">Background Image</label>
+                            <label for="slider_picture" class="form-label">Background Image <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 1920x1080"></i></label>
                             <input class="form-control @error('slider_picture') is-invalid @enderror" type="file" id="slider_picture"
                                 name="slider_picture">
                             @error('slider_picture')

@@ -90,7 +90,7 @@
                                     <form class="row g-3" method="POST" action="{{url('store_gallery', $villa)}}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="col-md-12">
-                                            <label for="gallery" class="form-label">Gambar</label>
+                                            <label for="gallery" class="form-label">Gambar <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 1920x1080"></i></label>
                                             <input type="file"
                                                 class="form-control @error('gallery') is-invalid @enderror"
                                                 id="gallery" name="gallery" required>
@@ -149,7 +149,7 @@
                                                 @csrf
                                                 <img src="{{asset('assets/'. $gallery->gallery)}}" alt="picture" style="width:50%; display: block; margin: auto;" class="mt-3">
                                                 <div class="col-md-12 mt-3">
-                                                    <label for="gallery" class="form-label">Gambar</label>
+                                                    <label for="gallery" class="form-label">Gambar <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 1920x1080"></i></label>
                                                     <input type="file"
                                                         class="form-control @error('gallery') is-invalid @enderror"
                                                         id="gallery" name="gallery" required>

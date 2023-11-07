@@ -82,7 +82,7 @@
                             @csrf
                             <img src="{{asset('assets/'. $overview->overview_picture)}}" alt="picture" style="width:20%; display: block; margin:auto; padding-bottom:10px;">
                             <div class="row mb-3">
-                                <label for="profileImage" class="col-md-4 col-lg-2 col-form-label">Overview Image</label>
+                                <label for="profileImage" class="col-md-4 col-lg-2 col-form-label">Overview Image <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 1920x1080"></i></label>
                                 <div class="col-md-8 col-lg-10">
                                     <div class="pt-2">
                                         <input class="form-control @error('overview_picture') is-invalid @enderror" type="file"

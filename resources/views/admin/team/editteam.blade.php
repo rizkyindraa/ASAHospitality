@@ -190,7 +190,7 @@
                             <img src="{{asset('assets/'. $team->foto)}}" alt="picture"
                                 style="width:20%; display: block; margin:auto; padding-bottom:10px;">
                             <div class="row mb-3">
-                                <label for="foto" class="col-md-4 col-lg-2 col-form-label">Foto</label>
+                                <label for="foto" class="col-md-4 col-lg-2 col-form-label">Foto <i class="bi bi-exclamation-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="Recomended Resolution 600x600"></i></label>
                                 <div class="col-md-8 col-lg-10">
                                     <div class="pt-2">
                                         <input class="form-control @error('foto') is-invalid @enderror"
