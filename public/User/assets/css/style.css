@@ -9,8 +9,13 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-body {
+/*body {
   font-family: "Poppins", sans-serif;
+  color: #555555;
+}*/
+
+body {
+  font-family: 'Lato', sans-serif;
   color: #555555;
 }
 
@@ -884,6 +889,7 @@ a:hover {
   position: relative;
   padding-left: 0;
   padding-right: 0;
+  font-family: 'Raleway', sans-serif;
 }
 
 .navbar-default.navbar-trans .nav-link:before,

@@ -15,6 +15,8 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
 
     <!-- Vendor CSS Files -->
     <link href="{{asset('User/assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
