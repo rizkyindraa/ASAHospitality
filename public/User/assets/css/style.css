@@ -731,25 +731,21 @@ a:hover {
   font-weight: 500;
   margin-bottom: 15px;
   font-size: 20px;
-  font-family: "Poppins", sans-serif
 }
 
 .pricing h4 {
   font-size: 48px;
   font-weight: 400;
   margin-bottom: 25px;
-  font-family: "Poppins", sans-serif
 }
 
 .pricing h4 span {
   font-size: 18px;
   display: block;
-  font-family: "Poppins", sans-serif
 }
 
 .pricing h4 sup {
   font-size: 28px;
-  font-family: "Poppins", sans-serif
 }
 
 .pricing ul {
@@ -2770,7 +2766,6 @@ footer .credits {
   margin-bottom: 5px;
   padding: 10px 30px;
   text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
   color: #643c1b;
   transition: 0.3;
   text-align: center;
