@@ -14,12 +14,6 @@ class TeamController extends Controller
         return view('admin.team.index', compact('teams'));
     }
 
-    public function teams_show_api() 
-    {
-        $teams = Team::all();
-        return response()->json($teams);
-    }
-
     public function team_search(Request $request)
     {
         $keyword = $request->cari;
